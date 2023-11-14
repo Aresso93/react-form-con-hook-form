@@ -7,16 +7,14 @@ import { useForm } from 'react-hook-form';
 
 export default function TravellerForm() {
 
-const {register, handleSubmit, formState:{errors}} = useForm();
+const {register, formState:{errors}} = useForm();
 
 console.log(errors)
 
 const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
   return (
     <>
-    <form onSubmit={handleSubmit((data) => {
-        console.log(data)
-    })}>
+    
     <div className='form-container'>
     <TextField 
     id="name" 
@@ -54,9 +52,8 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
         onChange={(newValue) => setValue(newValue)}
       />
     
-    <input type="submit" />
     </div>
-    </form>
+   
     </>
   );
 }

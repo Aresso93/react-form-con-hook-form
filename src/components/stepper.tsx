@@ -62,6 +62,7 @@ export default function TravellerStepper() {
             {activeStep === 0 && 
             <form onSubmit={methods.handleSubmit(onSubmit)}>
             <TravellerForm />
+            <input type="submit" />
             </form>
             }
             {activeStep === 1 && <LocationForm />}
