@@ -2,6 +2,7 @@ import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mu
 export function PreferencesForm(){
     return (
     <>
+    <div className='form-container'>
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">Accommodation</FormLabel>
       <RadioGroup
@@ -14,6 +15,7 @@ export function PreferencesForm(){
         <FormControlLabel value="apartment" control={<Radio />} label="Apartment" />
       </RadioGroup>
     </FormControl>
+    </div>
     </>
 
     )

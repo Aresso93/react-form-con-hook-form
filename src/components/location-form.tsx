@@ -1,25 +1,20 @@
 import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
-import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 export function LocationForm() {
   const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
-  const [age, setAge] = useState('');
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
-
+  
   return (
     <>
+    <div className="form-container">
     <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Destination</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
           label="Destination"
-          onChange={handleChange}
         >
           <MenuItem>La Spezia</MenuItem>
           <MenuItem>Cagliari</MenuItem>
@@ -27,16 +22,17 @@ export function LocationForm() {
         </Select>
       </FormControl>
       <DatePicker
-        label="Controlled picker"
+        label="Date of departure"
         value={value}
         onChange={(newValue) => setValue(newValue)}
       />
 
       <DatePicker
-        label="Controlled picker"
+        label="Date of arrival"
         value={value}
         onChange={(newValue) => setValue(newValue)}
       />
+    </div>
     </>
   );
 }
