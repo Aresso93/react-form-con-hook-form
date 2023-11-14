@@ -5,14 +5,9 @@ import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-
 export default function TravellerForm() {
 
 const {register, handleSubmit, formState:{errors}} = useForm();
-
-const onSubmit = (data: any) => {
-    console.log(data)
-}
 
 console.log(errors)
 
@@ -34,18 +29,24 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
     id="email" 
     label="Enter your email address" 
     variant="outlined"
-    {...register("email", {required: 'Mandatory'})} 
+    {...register("email", {pattern:{value: /[A-Za-z]@./, message:"Insert a valid email"}, required: 'Required'})} 
     />
    <p>{errors.email?.message}</p>
       <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
-        {...register("gender", {required: true})}
+        
       >
-        <FormControlLabel value="female" control={<Radio />} label="Female" />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
+        <FormControlLabel 
+        {...register("gender")}
+        value="male" control={<Radio />} label="Male" />
+        <FormControlLabel 
+        {...register("gender")}
+        value="female" control={<Radio />} label="Female" />
+        <FormControlLabel 
+        {...register("gender")}
+        value="other" control={<Radio />} label="Other" />
       </RadioGroup>
       <DatePicker
         label="Date of birth"
@@ -56,7 +57,6 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
     <input type="submit" />
     </div>
     </form>
-    
     </>
   );
 }

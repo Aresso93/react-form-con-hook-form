@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { LocationForm } from './location-form';
 import { PreferencesForm } from './preference-form';
 import TravellerForm from './traveller-form';
+import Recap from './recap';
 
 const steps = ['You', 'Your destination', 'Your preferences'];
 
@@ -41,9 +42,7 @@ export default function TravellerStepper() {
       </Stepper>
       {activeStep === steps.length ? (
         <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-          All steps completed - Accept our terms and conditions to submit your information
-          </Typography>
+          <Recap/>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
             <Button onClick={handleReset}>Reset</Button>
