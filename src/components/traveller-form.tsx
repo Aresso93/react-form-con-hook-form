@@ -25,25 +25,23 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
     <div className='form-container'>
     <TextField 
     id="name" 
-    label="Full Name" 
+    label="Enter your full name" 
     variant="outlined"
-    {...register("fullName", {required: 'RICHIESTONE', minLength: {value: 6, message:'Almeno 6 caratteri'}})} 
-    placeholder="hadoken" 
+    {...register("fullName", {pattern:{value: /[A-Za-z]{3}/, message: 'Letters only'}, required: 'Required', minLength: {value: 6, message:'Almeno 6 caratteri'}})} 
     />
     <p>{errors.fullName?.message}</p>
     <TextField 
     id="email" 
-    label="Email address" 
+    label="Enter your email address" 
     variant="outlined"
-    {...register("email", {required: 'PURE QUESTO'})} 
-    placeholder='shoryuken' 
+    {...register("email", {required: 'Mandatory'})} 
     />
-    <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+   <p>{errors.email?.message}</p>
+      <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
-        name="radio-buttons-group"
+        {...register("gender", {required: true})}
       >
         <FormControlLabel value="female" control={<Radio />} label="Female" />
         <FormControlLabel value="male" control={<Radio />} label="Male" />
@@ -54,7 +52,7 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
         value={value}
         onChange={(newValue) => setValue(newValue)}
       />
-    </FormControl>
+    
     <input type="submit" />
     </div>
     </form>
