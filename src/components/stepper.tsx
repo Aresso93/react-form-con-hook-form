@@ -9,10 +9,13 @@ import { LocationForm } from './location-form';
 import { PreferencesForm } from './preference-form';
 import TravellerForm from './traveller-form';
 import Recap from './recap';
+import { FormProvider, useForm, useFormContext } from "react-hook-form"
 
 const steps = ['You', 'Your destination', 'Your preferences'];
 
 export default function TravellerStepper() {
+  const methods = useForm()
+  const onSubmit = (data) => console.log(data)
   const [activeStep, setActiveStep] = React.useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -25,23 +28,25 @@ export default function TravellerStepper() {
   };
 
   return (
+    <FormProvider {...methods}>
+
     <Box sx={{ width: '100%' }}>
       <Stepper activeStep={activeStep}>
         {steps.map((label) => {
-          const stepProps: { completed?: boolean } = {};
-          const labelProps: {
-            optional?: React.ReactNode;
-          } = {};
-          
-          return (
-            <Step key={label} {...stepProps}>
+            const stepProps: { completed?: boolean } = {};
+            const labelProps: {
+                optional?: React.ReactNode;
+            } = {};
+            
+            return (
+                <Step key={label} {...stepProps}>
               <StepLabel {...labelProps}>{label}</StepLabel>
             </Step>
           );
         })}
       </Stepper>
       {activeStep === steps.length ? (
-        <React.Fragment>
+          <React.Fragment>
           <Recap/>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
@@ -49,12 +54,16 @@ export default function TravellerStepper() {
           </Box>
         </React.Fragment>
       ) : (
-        <React.Fragment>
+          <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
             Step {activeStep + 1}/{steps.length}
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-            {activeStep === 0 && <TravellerForm />}
+            {activeStep === 0 && 
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <TravellerForm />
+            </form>
+            }
             {activeStep === 1 && <LocationForm />}
             {activeStep === 2 && <PreferencesForm />}
             
@@ -67,7 +76,7 @@ export default function TravellerStepper() {
               disabled={activeStep === 0}
               onClick={handleBack}
               sx={{ mr: 1 }}
-            >
+              >
               Back
             </Button>
             
@@ -78,5 +87,6 @@ export default function TravellerStepper() {
         </React.Fragment>
       )}
     </Box>
+      </FormProvider>
   );
 }
