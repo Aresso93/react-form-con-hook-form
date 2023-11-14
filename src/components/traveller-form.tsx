@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFormContext } from 'react-hook-form';
 
 export default function TravellerForm() {
 
@@ -14,7 +14,6 @@ console.log(errors)
 const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
   return (
     <>
-    
     <div className='form-container'>
     <TextField 
     id="name" 
@@ -53,7 +52,6 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
       />
     
     </div>
-   
     </>
   );
 }

@@ -6,12 +6,11 @@ import { useForm } from "react-hook-form";
 
 export function LocationForm() {
   const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
-  const {register, handleSubmit, formState:{errors}} = useForm()
-  const onSubmit = (data) => console.log(data);
-  console.log(errors)
+  const {register, formState:{errors}} = useForm()
+  
   return (
     <>
-    <form onSubmit={handleSubmit(onSubmit)}>
+  
     <div className="form-container">
     
         <InputLabel id="demo-simple-select-label">Destination</InputLabel>
@@ -44,8 +43,8 @@ export function LocationForm() {
         onChange={(newValue) => setValue(newValue)}
       />
     </div>
-    <input type="submit" />
-    </form>
+  
+  
     </>
   );
 }
