@@ -7,8 +7,7 @@ import { useForm, useFormContext } from 'react-hook-form';
 
 export default function TravellerForm() {
 
-const {register, formState:{errors}} = useForm();
-
+const {register, formState:{errors}} = useFormContext();
 console.log(errors)
 
 const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
@@ -31,9 +30,8 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
    <p>{errors.email?.message}</p>
       <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
       <RadioGroup
-        aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="female"
-        
+        defaultValue="male"
+        name='gender'
       >
         <FormControlLabel 
         {...register("gender")}
@@ -49,7 +47,7 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
         label="Date of birth"
         value={value}
         onChange={(newValue) => setValue(newValue)}
-      />
+      /> 
     
     </div>
     </>

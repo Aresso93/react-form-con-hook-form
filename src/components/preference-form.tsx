@@ -1,18 +1,31 @@
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import { useFormContext } from "react-hook-form";
 export function PreferencesForm(){
+const {register} = useFormContext();
     return (
     <>
     <div className='form-container'>
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">Accommodation</FormLabel>
       <RadioGroup
-        aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="hotel"
-        name="radio-buttons-group"
+        name="accommodation"
       >
-        <FormControlLabel value="hotel" control={<Radio />} label="Hotel" />
-        <FormControlLabel value="campingSite" control={<Radio />} label="Camping Site" />
-        <FormControlLabel value="apartment" control={<Radio />} label="Apartment" />
+        <FormControlLabel 
+        {...register("accommodation")}
+        value="hotel" 
+        control={<Radio />} 
+        label="Hotel" />
+        <FormControlLabel 
+        {...register("accommodation")}
+        value="campingSite" 
+        control={<Radio />} 
+        label="Camping Site" />
+        <FormControlLabel
+        {...register("accommodation")}
+        value="apartment" 
+        control={<Radio />} 
+        label="Apartment" />
       </RadioGroup>
     </FormControl>
     </div>
