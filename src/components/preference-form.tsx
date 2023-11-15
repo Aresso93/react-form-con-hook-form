@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, FormGroup, Checkbox } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 export function PreferencesForm(){
 const {register} = useFormContext();
@@ -27,6 +27,10 @@ const {register} = useFormContext();
         control={<Radio />} 
         label="Apartment" />
       </RadioGroup>
+
+      <FormGroup>
+       
+      </FormGroup>
     </FormControl>
     </div>
     </>

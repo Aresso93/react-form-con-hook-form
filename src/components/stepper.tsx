@@ -56,7 +56,7 @@ export default function TravellerStepper({children}) {
             Step {activeStep + 1}/{steps.length}
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-            {activeStep === 0 && <TravellerForm {...methods}/>}
+            {activeStep === 0 && <TravellerForm/>}
 
             {activeStep === 1 && <LocationForm />}
 

@@ -31,7 +31,7 @@ export function LocationForm() {
           >Mordor</MenuItem>
         </Select>
       
-      {/* <DatePicker
+      <DatePicker
         label="Date of departure"
         value={value}
         onChange={(newValue) => setValue(newValue)}
@@ -41,7 +41,7 @@ export function LocationForm() {
         label="Date of arrival"
         value={value}
         onChange={(newValue) => setValue(newValue)}
-      /> */}
+      /> 
     </div>
   
   

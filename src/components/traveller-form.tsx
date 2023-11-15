@@ -1,16 +1,19 @@
-import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Checkbox } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';
-import { useForm, useFormContext } from 'react-hook-form';
+import { Controller, useForm, useFormContext } from 'react-hook-form';
 
 export default function TravellerForm() {
 
-const {register, formState:{errors}} = useFormContext();
+const {register, formState:{errors}, watch, control} = useFormContext();
 console.log(errors)
 
 const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
+const genderRegister = register('gender')
+
+console.log(genderRegister)
   return (
     <>
     <div className='form-container'>
@@ -27,22 +30,43 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
     variant="outlined"
     {...register("email", {pattern:{value: /[A-Za-z]@./, message:"Insert a valid email"}, required: 'Required'})} 
     />
+    <p>{watch("fullName")}</p>
    <p>{errors.email?.message}</p>
       <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
-      <RadioGroup
-        defaultValue="male"
-        name='gender'
+      <Controller
+        name="gender"
+        control={control}
+        // rules={{ required: true }}
+        render={({ field }) => <RadioGroup
+       {...field}
+        >
+  
+        <Radio value="male" />
+        <Radio value="female" />
+        <Radio value="other" />
+        </RadioGroup>}
+      />
+      
+      {/* <RadioGroup
+       
+        
       >
         <FormControlLabel 
         {...register("gender")}
-        value="male" control={<Radio />} label="Male" />
+        value="male" control={<Radio 
+          
+        />} label="Male" />
         <FormControlLabel 
         {...register("gender")}
-        value="female" control={<Radio />} label="Female" />
+        value="female" control={<Radio 
+          
+        />} label="Female" />
         <FormControlLabel 
         {...register("gender")}
-        value="other" control={<Radio />} label="Other" />
-      </RadioGroup>
+        value="other" control={<Radio 
+         
+        />} label="Other" />
+      </RadioGroup> */}
       <DatePicker
         label="Date of birth"
         value={value}

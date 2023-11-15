@@ -48,3 +48,8 @@
   justify-content: center;
   justify-self: center;
 }
+
+.recap-modals{
+  display: flex;
+  flex-direction: column
+}
