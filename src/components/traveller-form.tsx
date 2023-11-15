@@ -1,16 +1,12 @@
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Checkbox } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers';
-import dayjs, { Dayjs } from 'dayjs';
-import { useState } from 'react';
 import { Controller, useForm, useFormContext } from 'react-hook-form';
 
 export default function TravellerForm() {
 
 const {register, formState:{errors}, watch, control} = useFormContext();
 console.log('ERROR', errors)
-
-const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
 
   return (
     <>

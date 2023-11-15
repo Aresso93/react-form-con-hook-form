@@ -10,25 +10,17 @@ import { PreferencesForm } from "./preference-form";
 import TravellerForm from "./traveller-form";
 import Recap from "./recap";
 import { useFormContext } from "react-hook-form";
+import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 
 const steps = ["You", "Your destination", "Your preferences"];
 const onSubmit = (data) => console.log('AAAAAAAA', data);
+
 export default function TravellerStepper({ children }) {
   const methods = useFormContext();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
+  const stepperControls = useStepperControls()
   return (
     <Box sx={{ width: "100%" }}>
-      <Stepper activeStep={activeStep}>
+      <Stepper activeStep={stepperControls.states.activeStep}>
         {steps.map((label) => {
           const stepProps: { completed?: boolean } = {};
           const labelProps: {
@@ -42,44 +34,44 @@ export default function TravellerStepper({ children }) {
           );
         })}
       </Stepper>
-      {activeStep === steps.length ? (
+      {stepperControls.states.activeStep === steps.length ? (
         <React.Fragment>
           <Recap />
           <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
             <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleReset}>Reset</Button>
+            <Button onClick={stepperControls.actions.handleReset}>Reset</Button>
           </Box>
         </React.Fragment>
       ) : (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            Step {activeStep + 1}/{steps.length}
+            Step {stepperControls.states.activeStep + 1}/{steps.length}
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-            {activeStep === 0 && <TravellerForm />}
+            {stepperControls.states.activeStep === 0 && <TravellerForm />}
 
-            {activeStep === 1 && <LocationForm />}
+            {stepperControls.states.activeStep === 1 && <LocationForm />}
 
-            {activeStep === 2 && <PreferencesForm />}
+            {stepperControls.states.activeStep === 2 && <PreferencesForm />}
 
             <Box sx={{ flex: "1 1 auto" }} />
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             <Button
               color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
+              disabled={stepperControls.states.activeStep === 0}
+              onClick={stepperControls.actions.handleBack}
               sx={{ mr: 1 }}
             >
               Back
             </Button>
 
             <Button onClick={() => {
-              handleNext()
+              stepperControls.actions.handleNext()
               methods.handleSubmit(onSubmit)
             }}>
 
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              {stepperControls.states.activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </Box>
         </React.Fragment>

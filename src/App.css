@@ -64,3 +64,10 @@
   padding: 8px;
   margin: 4px;
 }
+
+.recap-container{
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  align-items: center;
+}
