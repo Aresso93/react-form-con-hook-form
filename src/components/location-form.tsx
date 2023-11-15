@@ -15,11 +15,10 @@ export function LocationForm() {
         <Controller
         name="destination"
         control={control}
+        defaultValue={''}
         render={({field})=> <Select
         {...field}
         >
-      
-       
           <MenuItem
           value="La Spezia"
           >La Spezia</MenuItem>

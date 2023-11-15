@@ -8,7 +8,7 @@ import { Controller, useForm, useFormContext } from 'react-hook-form';
 export default function TravellerForm() {
 
 const {register, formState:{errors}, watch, control} = useFormContext();
-console.log(errors)
+console.log('ERROR', errors)
 
 const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
 
