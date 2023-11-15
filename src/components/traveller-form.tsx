@@ -11,9 +11,7 @@ const {register, formState:{errors}, watch, control} = useFormContext();
 console.log(errors)
 
 const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
-const genderRegister = register('gender')
 
-console.log(genderRegister)
   return (
     <>
     <div className='form-container'>
@@ -40,10 +38,19 @@ console.log(genderRegister)
         render={({ field }) => <RadioGroup
        {...field}
         >
-  
-        <Radio value="male" />
-        <Radio value="female" />
-        <Radio value="other" />
+       
+       <FormControlLabel 
+        value="male" control={<Radio 
+          
+        />} label="male" />
+        <FormControlLabel 
+        value="female" control={<Radio 
+          
+        />} label="female" />
+      <FormControlLabel 
+        value="other" control={<Radio 
+          
+        />} label="other" />
         </RadioGroup>}
       />
       
