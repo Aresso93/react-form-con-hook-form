@@ -45,27 +45,38 @@ export function PreferencesForm() {
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
-            <FormControlLabel
-              control={<Checkbox 
-                {...register('breakfast')}
-                />}
-              label="Breakfast"
-              
-            />
-            <FormControlLabel
-              control={<Checkbox 
-                {...register('lunch')}
-                />}
-              label="Lunch"
-              
-            />
-            <FormControlLabel
-              control={<Checkbox
-                {...register('dinner')}
-              />}
-              label="Dinner"
-              
-            />
+            <Controller
+            name="breakfast"
+            control={control}
+            render={({field}) => <FormControlLabel
+            control={<Checkbox/>}
+            label="Breakfast"
+            {...field}
+          />
+          }
+          />
+            
+            <Controller
+            name="lunch"
+            control={control}
+            render={({field}) => <FormControlLabel
+            control={<Checkbox/>}
+            label="lunch"
+            {...field}
+          />
+          }
+          />
+
+            <Controller
+            name="dinner"
+            control={control}
+            render={({field}) => <FormControlLabel
+            control={<Checkbox/>}
+            label="dinner"
+            {...field}
+          />
+          }
+          />  
           </FormGroup>
         </FormControl>
           <p>{watch("meals".toString())}</p>
