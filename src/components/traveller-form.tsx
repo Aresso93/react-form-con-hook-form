@@ -19,7 +19,7 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
     id="name" 
     label="Enter your full name" 
     variant="outlined"
-    {...register("fullName", {pattern:{value: /[A-Za-z]{3}/, message: 'Letters only'}, required: 'Required', minLength: {value: 6, message:'Almeno 6 caratteri'}})} 
+    {...register("fullName", {pattern:{value: /[A-Za-z]/, message: 'Letters only'}, required: 'Required', minLength: {value: 6, message:'Almeno 6 caratteri'}})} 
     />
     <p>{errors.fullName?.message}</p>
     <TextField 
@@ -54,26 +54,6 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
         </RadioGroup>}
       />
       
-      {/* <RadioGroup
-       
-        
-      >
-        <FormControlLabel 
-        {...register("gender")}
-        value="male" control={<Radio 
-          
-        />} label="Male" />
-        <FormControlLabel 
-        {...register("gender")}
-        value="female" control={<Radio 
-          
-        />} label="Female" />
-        <FormControlLabel 
-        {...register("gender")}
-        value="other" control={<Radio 
-         
-        />} label="Other" />
-      </RadioGroup> */}
       <DatePicker
         label="Date of birth"
         value={value}

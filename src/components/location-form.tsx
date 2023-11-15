@@ -2,24 +2,24 @@ import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import { useForm, useFormContext } from "react-hook-form";
+import { Controller, useForm, useFormContext } from "react-hook-form";
 
 export function LocationForm() {
   const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
-  const {register, formState:{errors}} = useFormContext();
+  const {register, formState:{errors}, control} = useFormContext();
   console.log(errors)
   return (
     <>
-  
     <div className="form-container">
-    
         <InputLabel id="demo-simple-select-label">Destination</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          defaultValue={''}
-          {...register("destination", {required: true})}
+        <Controller
+        name="destination"
+        control={control}
+        render={({field})=> <Select
+        {...field}
         >
+      
+       
           <MenuItem
           value="La Spezia"
           >La Spezia</MenuItem>
@@ -29,7 +29,8 @@ export function LocationForm() {
           <MenuItem
           value="Mordor"        
           >Mordor</MenuItem>
-        </Select>
+        </Select>}
+        />
       
       <DatePicker
         label="Date of departure"
