@@ -15,9 +15,10 @@ export default function EditModal({children}){
 
     return (
         <>
+        <div className="form-dialog">
         <Button variant="outlined" onClick={handleClickOpen}>
         Edit this section
-      </Button>
+        </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Edit the information</DialogTitle>
         <DialogContent>
@@ -27,6 +28,7 @@ export default function EditModal({children}){
           <Button onClick={handleClose}>Done</Button>
         </DialogActions>
       </Dialog>
+        </div>
       </>
     )
 

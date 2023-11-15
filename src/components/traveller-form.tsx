@@ -28,7 +28,6 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
     variant="outlined"
     {...register("email", {pattern:{value: /[A-Za-z]@./, message:"Insert a valid email"}, required: 'Required'})} 
     />
-    <p>{watch("fullName")}</p>
    <p>{errors.email?.message}</p>
       <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
       <Controller
@@ -54,11 +53,13 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
         </RadioGroup>}
       />
       
-      <DatePicker
-        label="Date of birth"
-        value={value}
-        onChange={(newValue) => setValue(newValue)}
-      /> 
+     <Controller
+     name='date of birth'
+     control={control}
+     render={({field: {onChange, value}}) => (
+      <DatePicker value={value} onChange={onChange}/>
+     )}
+     />
     
     </div>
     </>

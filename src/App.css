@@ -44,9 +44,16 @@
 .form-container{
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  padding: 8px;
   justify-content: center;
   justify-self: center;
+}
+
+.form-dialog{
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
 }
 
 .recap-modals{

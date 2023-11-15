@@ -6,45 +6,45 @@ import { Controller, useForm, useFormContext } from "react-hook-form";
 
 export function LocationForm() {
   const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
-  const {register, formState:{errors}, control} = useFormContext();
-  console.log(errors)
+  const {
+    register,
+    formState: { errors },
+    control,
+  } = useFormContext();
+  console.log(errors);
   return (
     <>
-    <div className="form-container">
+      <div className="form-container">
         <InputLabel id="demo-simple-select-label">Destination</InputLabel>
         <Controller
-        name="destination"
-        control={control}
-        defaultValue={''}
-        render={({field})=> <Select
-        {...field}
-        >
-          <MenuItem
-          value="La Spezia"
-          >La Spezia</MenuItem>
-          <MenuItem
-          value="Cagliari"
-          >Cagliari</MenuItem>
-          <MenuItem
-          value="Mordor"        
-          >Mordor</MenuItem>
-        </Select>}
+          name="destination"
+          control={control}
+          defaultValue={""}
+          render={({ field }) => (
+            <Select {...field}>
+              <MenuItem value="La Spezia">La Spezia</MenuItem>
+              <MenuItem value="Cagliari">Cagliari</MenuItem>
+              <MenuItem value="Mordor">Mordor</MenuItem>
+            </Select>
+          )}
         />
-      
-      <DatePicker
-        label="Date of departure"
-        value={value}
-        onChange={(newValue) => setValue(newValue)}
-      />
 
-      <DatePicker
-        label="Date of arrival"
-        value={value}
-        onChange={(newValue) => setValue(newValue)}
-      /> 
-    </div>
-  
-  
+        <Controller
+          name="date of departure"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <DatePicker value={value} onChange={onChange} />
+          )}
+        />
+
+        <Controller
+          name="date of return"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            <DatePicker value={value} onChange={onChange} />
+          )}
+        />
+      </div>
     </>
   );
 }

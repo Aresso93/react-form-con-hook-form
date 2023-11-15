@@ -13,7 +13,7 @@ import { useFormContext } from "react-hook-form";
 
 const steps = ["You", "Your destination", "Your preferences"];
 
-export default function TravellerStepper({children}) {
+export default function TravellerStepper({ children }) {
   const methods = useFormContext();
   const [activeStep, setActiveStep] = React.useState(0);
   const handleNext = () => {
@@ -56,7 +56,7 @@ export default function TravellerStepper({children}) {
             Step {activeStep + 1}/{steps.length}
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-            {activeStep === 0 && <TravellerForm/>}
+            {activeStep === 0 && <TravellerForm />}
 
             {activeStep === 1 && <LocationForm />}
 
