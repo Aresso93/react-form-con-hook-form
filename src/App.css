@@ -56,7 +56,11 @@
   padding: 8px;
 }
 
-.recap-modals{
+.recap-modal{
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 1ch;
+  padding: 8px;
+  margin: 4px;
 }
