@@ -12,7 +12,7 @@ import Recap from "./recap";
 import { useFormContext } from "react-hook-form";
 
 const steps = ["You", "Your destination", "Your preferences"];
-
+const onSubmit = (data) => console.log('AAAAAAAA', data);
 export default function TravellerStepper({ children }) {
   const methods = useFormContext();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -74,7 +74,11 @@ export default function TravellerStepper({ children }) {
               Back
             </Button>
 
-            <Button onClick={handleNext}>
+            <Button onClick={() => {
+              handleNext()
+              methods.handleSubmit(onSubmit)
+            }}>
+
               {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
           </Box>

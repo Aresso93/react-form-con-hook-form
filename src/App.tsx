@@ -17,7 +17,7 @@ function App() {
         <TravellerStepper>
           
         </TravellerStepper>
-        <input type='submit'/>
+  
       </form>
     </FormProvider>
     </LocalizationProvider>
