@@ -33,7 +33,6 @@ const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
       <Controller
         name="gender"
         control={control}
-        // rules={{ required: true }}
         render={({ field }) => <RadioGroup
        {...field}
         >

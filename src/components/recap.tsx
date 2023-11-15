@@ -3,7 +3,7 @@ import EditModal from "./edit-modal";
 import { LocationForm } from "./location-form";
 import { PreferencesForm } from "./preference-form";
 import TravellerForm from "./traveller-form";
-
+import { Button, Checkbox, FormControlLabel } from "@mui/material";
 
 export default function Recap(){
    const formContext = useFormContext()
@@ -12,6 +12,25 @@ export default function Recap(){
    const stringReturnDate = formContext.getValues("date of return").toString();
     return (
     <>
+      <h3>
+         Terms and conditions
+      </h3>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+        provident consequatur sint quibusdam, quam distinctio tempore excepturi
+        aperiam nam eius culpa mollitia possimus illum aliquid numquam? Omnis
+        illum molestiae saepe.
+
+        <small>
+         PLEASE NOTE: by submitting your data you confirm that we can steal all
+          of your gummy bears
+        </small>
+        <hr />
+        <FormControlLabel control={<Checkbox/>} label="I accept" /><br />
+        <Button
+        variant="outlined"
+        >
+         Submit
+        </Button>
     <div className="recap-modal">
       Your personal information: <br></br>
       <span>Full name: {formContext.getValues("fullName")}</span>
