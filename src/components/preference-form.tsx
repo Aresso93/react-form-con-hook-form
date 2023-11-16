@@ -92,6 +92,7 @@ export function PreferencesForm() {
             name="activities.trekking"
             control={control}
             render={({field}) => <FormControlLabel
+            checked={methods.getValues("activities.trekking")}
             control={<Checkbox/>}
             label="Trekking"
             {...field}
@@ -103,6 +104,7 @@ export function PreferencesForm() {
             name="activities.sports"
             control={control}
             render={({field}) => <FormControlLabel
+            checked={methods.getValues("activities.sports")}
             control={<Checkbox/>}
             label="Sports"
             {...field}
@@ -114,6 +116,7 @@ export function PreferencesForm() {
             name="activities.yoga"
             control={control}
             render={({field}) => <FormControlLabel
+            checked={methods.getValues("activities.yoga")}
             control={<Checkbox/>}
             label="Yoga"
             {...field}

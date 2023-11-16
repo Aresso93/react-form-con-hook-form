@@ -4,14 +4,25 @@ import { LocationForm } from "./location-form";
 import { PreferencesForm } from "./preference-form";
 import TravellerForm from "./traveller-form";
 import { Button, Checkbox, FormControlLabel } from "@mui/material";
-import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 
 export default function Recap() {
-  const { register, watch } = useFormContext();
+  const { register, watch, getValues } = useFormContext();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useForm();
-  let meals = methods.getValues("meals")
-  console.log(meals);
+  let meals = getValues("meals")
+  let activities = getValues("activities")
+
+  function arrayDisplayer(obj:{}){
+    let objArray = Object.entries(obj);
+    let tempArray = [];
+    for (let i = 0; i < objArray.length; i++) {
+      const element = objArray[i];
+      if (element[1] === true) {
+        tempArray.push(element[0]);
+      }
+    }
+    return tempArray
+  }
   
   return (
     <>
@@ -25,7 +36,7 @@ export default function Recap() {
           PLEASE NOTE: by submitting your data you confirm that we can steal all
           of your gummy bears
         </small>
-        <p>{methods.getValues("accept")}</p>
+        <p>{getValues("accept")}</p>
         <FormControlLabel
           {...register("accept")}
           control={<Checkbox />}
@@ -63,7 +74,23 @@ export default function Recap() {
       <div className="recap-modal">
         Information about your preferences<br></br>
         <span>Method of accommodation: {watch("accommodation")}</span>
-        <span>Selected meals: {watch("meals.breakfast").toString()}</span>
+       Selected meals: 
+       <div>
+        {arrayDisplayer(meals).map(
+          (meals) => (
+            <div>{meals}</div>
+          )
+        )}
+       </div>
+       Selected activities: 
+       <div>
+        {arrayDisplayer(activities).map(
+          (activities) => (
+            <div>{activities}</div>
+          )
+        )}
+       </div>
+     
         <EditModal>
           <PreferencesForm />
         </EditModal>
