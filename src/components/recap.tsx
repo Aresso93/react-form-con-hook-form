@@ -8,12 +8,11 @@ import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 
 export default function Recap() {
   const { register, watch } = useFormContext();
-  const stepperControls = useStepperControls();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useForm();
-  const data = "AAAA";
-  //const formContext = useFormContext()
-
+  let meals = methods.getValues("meals")
+  console.log(meals);
+  
   return (
     <>
       <div className="recap-container">
@@ -64,7 +63,7 @@ export default function Recap() {
       <div className="recap-modal">
         Information about your preferences<br></br>
         <span>Method of accommodation: {watch("accommodation")}</span>
-        <span>Selected meals: {watch("breakfast")}</span>
+        <span>Selected meals: {watch("meals.breakfast").toString()}</span>
         <EditModal>
           <PreferencesForm />
         </EditModal>

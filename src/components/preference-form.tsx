@@ -52,6 +52,7 @@ export function PreferencesForm() {
             name="meals.breakfast"
             control={control}
             render={({field}) => <FormControlLabel
+            checked={methods.getValues("meals.breakfast")}
             control={<Checkbox/>}
             label="Breakfast"
             {...field}
@@ -63,6 +64,7 @@ export function PreferencesForm() {
             name="meals.lunch"
             control={control}
             render={({field}) => <FormControlLabel
+            checked={methods.getValues("meals.lunch")}
             control={<Checkbox/>}
             label="Lunch"
             {...field}
@@ -74,6 +76,7 @@ export function PreferencesForm() {
             name="meals.dinner"
             control={control}
             render={({field}) => <FormControlLabel
+            checked={methods.getValues("meals.dinner")}
             control={<Checkbox/>}
             label="Dinner"
             {...field}
