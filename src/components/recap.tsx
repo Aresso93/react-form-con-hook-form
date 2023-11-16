@@ -4,14 +4,17 @@ import { LocationForm } from "./location-form";
 import { PreferencesForm } from "./preference-form";
 import TravellerForm from "./traveller-form";
 import { Button, Checkbox, FormControlLabel } from "@mui/material";
+import { useEffect } from "react";
 
 export default function Recap() {
   const { register, watch, getValues } = useFormContext();
+  //useEffect(() => {}, [getValues("accept")])
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useForm();
   let meals = watch("meals")
   let activities = watch("activities")
-
+  console.log(getValues("accept"))
+  
   function arrayDisplayer(obj:{}){
     let objArray = Object.entries(obj);
     let tempArray = [];
@@ -36,13 +39,14 @@ export default function Recap() {
           PLEASE NOTE: by submitting your data you confirm that we can steal all
           of your gummy bears
         </small>
-        <p>{getValues("accept")}</p>
+       
         <FormControlLabel
           {...register("accept")}
           control={<Checkbox />}
           label="I accept"
+          checked={watch("accept")}
         />
-        {methods.getValues("accept") === true ? (
+        {getValues("accept") === true ? (
           <Button variant="outlined" onClick={methods.handleSubmit(onSubmit)}>
             Submit
           </Button>
