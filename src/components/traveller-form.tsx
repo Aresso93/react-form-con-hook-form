@@ -52,7 +52,8 @@ console.log('ERROR', errors)
      name='date of birth'
      control={control}
      render={({field: {onChange, value}}) => (
-      <DatePicker value={value} onChange={onChange}/>
+      <DatePicker value={value} onChange={onChange}
+      />
      )}
      />
     

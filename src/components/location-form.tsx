@@ -33,7 +33,8 @@ export function LocationForm() {
           name="date of departure"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <DatePicker value={value} onChange={onChange} />
+            <DatePicker value={value} onChange={onChange} 
+            />
           )}
         />
 
@@ -41,7 +42,8 @@ export function LocationForm() {
           name="date of return"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <DatePicker value={value} onChange={onChange} />
+            <DatePicker value={value} onChange={onChange} 
+            />
           )}
         />
       </div>

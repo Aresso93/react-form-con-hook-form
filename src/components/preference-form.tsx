@@ -61,7 +61,7 @@ export function PreferencesForm() {
             control={control}
             render={({field}) => <FormControlLabel
             control={<Checkbox/>}
-            label="lunch"
+            label="Lunch"
             {...field}
           />
           }
@@ -72,7 +72,7 @@ export function PreferencesForm() {
             control={control}
             render={({field}) => <FormControlLabel
             control={<Checkbox/>}
-            label="dinner"
+            label="Dinner"
             {...field}
           />
           }

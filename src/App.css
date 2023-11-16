@@ -71,3 +71,8 @@
   padding: 4px;
   align-items: center;
 }
+
+.reset-button-container{
+  display: flex;
+  justify-content: center;
+}
