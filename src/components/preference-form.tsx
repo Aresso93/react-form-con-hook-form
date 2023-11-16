@@ -55,42 +55,26 @@ export function PreferencesForm() {
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
-            <Controller
-              name="meals.breakfast"
-              control={control}
-              render={({ field }) => (
-                <FormControlLabel
-                  checked={methods.getValues("meals.breakfast")}
-                  control={<Checkbox />}
-                  label="Breakfast"
-                  {...field}
+            
+            {lunchOptions.map(
+              (meal) => (
+
+                <Controller
+                  name="meals.dinner"
+                  control={control}
+                  render={({ field }) => (
+                    <FormControlLabel
+                      checked={methods.getValues("meals.dinner")}
+                      control={<Checkbox />}
+                      label="Dinner"
+                      {...field}
+                    />
+                  )}
                 />
-              )}
-            />
-            <Controller
-              name="meals.lunch"
-              control={control}
-              render={({ field }) => (
-                <FormControlLabel
-                  checked={methods.getValues("meals.lunch")}
-                  control={<Checkbox />}
-                  label="Lunch"
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="meals.dinner"
-              control={control}
-              render={({ field }) => (
-                <FormControlLabel
-                  checked={methods.getValues("meals.dinner")}
-                  control={<Checkbox />}
-                  label="Dinner"
-                  {...field}
-                />
-              )}
-            />
+              )
+            )}
+
+
           </FormGroup>
           <FormGroup>
             Pick the activities you're interested in (you can select multiple
