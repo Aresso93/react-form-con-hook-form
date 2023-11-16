@@ -9,9 +9,9 @@ import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 export default function Recap() {
   const { register, watch } = useFormContext();
   const stepperControls = useStepperControls();
-  const onSubmit = (data) => console.log('AAAAAAAA', data);
-  const methods = useForm()
-  const data = 'AAAA'
+  const onSubmit = (data) => console.log("AAAAAAAA", data);
+  const methods = useForm();
+  const data = "AAAA";
   //const formContext = useFormContext()
 
   return (
@@ -26,25 +26,21 @@ export default function Recap() {
           PLEASE NOTE: by submitting your data you confirm that we can steal all
           of your gummy bears
         </small>
+        <p>{methods.getValues("accept")}</p>
         <FormControlLabel
-        {...register} 
-        control={<Checkbox />} 
-        label="I accept" />
-
-        <Button
-          variant="outlined"
-          onClick={methods.handleSubmit(onSubmit)}
-        >
-          Submit
-        </Button>
-
-        <Button
-          variant="outlined"
-          disabled
-        >
-          Submit
-        </Button>
-
+          {...register("accept")}
+          control={<Checkbox />}
+          label="I accept"
+        />
+        {methods.getValues("accept") === true ? (
+          <Button variant="outlined" onClick={methods.handleSubmit(onSubmit)}>
+            Submit
+          </Button>
+        ) : (
+          <Button variant="outlined" disabled>
+            Submit
+          </Button>
+        )}
       </div>
       <div className="recap-modal">
         Your personal information<br></br>
@@ -68,7 +64,7 @@ export default function Recap() {
       <div className="recap-modal">
         Information about your preferences<br></br>
         <span>Method of accommodation: {watch("accommodation")}</span>
-        <span>Selected meals: </span>
+        <span>Selected meals: {watch("breakfast")}</span>
         <EditModal>
           <PreferencesForm />
         </EditModal>

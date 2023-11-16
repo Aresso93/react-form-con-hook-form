@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers";
-import dayjs, { Dayjs } from "dayjs";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import { Controller, useForm, useFormContext } from "react-hook-form";
+import { InputLabel, Select, MenuItem } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 export function LocationForm() {
-  const [value, setValue] = useState<Dayjs | null>(dayjs("2022-04-17"));
+
   const {
-    register,
     formState: { errors },
     control,
   } = useFormContext();

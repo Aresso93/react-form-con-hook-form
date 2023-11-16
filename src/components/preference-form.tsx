@@ -11,6 +11,8 @@ import { Controller, useFormContext} from "react-hook-form";
 
 export function PreferencesForm() {
   const { register, control, watch } = useFormContext();
+  const onSubmit = (data) => console.log('AAAAAAAA', data);
+  const methods = useFormContext();
   return (
     <>
       <div className="form-container">
@@ -79,7 +81,6 @@ export function PreferencesForm() {
           />  
           </FormGroup>
         </FormControl>
-          <p>{watch("meals".toString())}</p>
       </div>
     </>
   );
