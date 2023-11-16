@@ -15,7 +15,7 @@ import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 const steps = ["You", "Your destination", "Your preferences"];
 const onSubmit = (data) => console.log('AAAAAAAA', data);
 
-export default function TravellerStepper({ children }) {
+export default function TravellerStepper() {
   const methods = useFormContext();
   const stepperControls = useStepperControls()
   return (

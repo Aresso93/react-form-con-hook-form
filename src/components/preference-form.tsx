@@ -10,9 +10,11 @@ import {
 import { Controller, useFormContext} from "react-hook-form";
 
 export function PreferencesForm() {
-  const { register, control, watch } = useFormContext();
+  const { register, control, watch, getValues } = useFormContext();
   const onSubmit = (data) => console.log('AAAAAAAA', data);
   const methods = useFormContext();
+  console.log('PASTI', getValues("meals"))
+  
   return (
     <>
       <div className="form-container">
@@ -49,10 +51,10 @@ export function PreferencesForm() {
             Pick the meals you want during your stay (you can select multiple
             options)
             <Controller
-            name="meals.breakfast"
+            name="meals.0.breakfast"
             control={control}
             render={({field}) => <FormControlLabel
-            checked={methods.getValues("meals.breakfast")}
+            checked={methods.getValues("meals.0.breakfast")}
             control={<Checkbox/>}
             label="Breakfast"
             {...field}
@@ -61,10 +63,10 @@ export function PreferencesForm() {
           />
             
             <Controller
-            name="meals.lunch"
+            name="meals.1.lunch"
             control={control}
             render={({field}) => <FormControlLabel
-            checked={methods.getValues("meals.lunch")}
+            checked={methods.getValues("meals.1.lunch")}
             control={<Checkbox/>}
             label="Lunch"
             {...field}
@@ -73,10 +75,10 @@ export function PreferencesForm() {
           />
 
             <Controller
-            name="meals.dinner"
+            name="meals.2.dinner"
             control={control}
             render={({field}) => <FormControlLabel
-            checked={methods.getValues("meals.dinner")}
+            checked={methods.getValues("meals.2.dinner")}
             control={<Checkbox/>}
             label="Dinner"
             {...field}

@@ -2,12 +2,17 @@ import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Checkbox }
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers';
 import { Controller, useForm, useFormContext } from 'react-hook-form';
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  fullName: yup.string().required("CAMPONE RICHIESTONE"),
+  email: yup.string().required("RICHIESTO").matches(/[A-Za-z]@./)
+})
 
 export default function TravellerForm() {
 
-const {register, formState:{errors}, watch, control} = useFormContext();
-console.log('ERROR', errors)
-
+const {register, control, getValues, formState:{errors}} = useFormContext();
+console.log('Traveller', getValues())
   return (
     <>
     <div className='form-container'>
@@ -15,16 +20,17 @@ console.log('ERROR', errors)
     id="name" 
     label="Enter your full name" 
     variant="outlined"
-    {...register("fullName", {pattern:{value: /[A-Za-z]/, message: 'Letters only'}, required: 'Required', minLength: {value: 6, message:'Almeno 6 caratteri'}})} 
+    {...register("fullName")} 
     />
-    <p>{errors.fullName?.message}</p>
+    {errors.fullName && <p>{errors.name?.message}</p>}
     <TextField 
     id="email" 
     label="Enter your email address" 
     variant="outlined"
-    {...register("email", {pattern:{value: /[A-Za-z]@./, message:"Insert a valid email"}, required: 'Required'})} 
+    {...register("email")} 
     />
-   <p>{errors.email?.message}</p>
+   {errors.email && <p>{errors.email?.message}</p>}
+
       <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
       <Controller
         name="gender"
