@@ -44,11 +44,12 @@ export function PreferencesForm() {
               </RadioGroup>
             )}
           />
-          <FormGroup>
+          <FormGroup
+          >
             Pick the meals you want during your stay (you can select multiple
             options)
             <Controller
-            name="breakfast"
+            name="meals.breakfast"
             control={control}
             render={({field}) => <FormControlLabel
             control={<Checkbox/>}
@@ -59,7 +60,7 @@ export function PreferencesForm() {
           />
             
             <Controller
-            name="lunch"
+            name="meals.lunch"
             control={control}
             render={({field}) => <FormControlLabel
             control={<Checkbox/>}
@@ -70,11 +71,48 @@ export function PreferencesForm() {
           />
 
             <Controller
-            name="dinner"
+            name="meals.dinner"
             control={control}
             render={({field}) => <FormControlLabel
             control={<Checkbox/>}
             label="Dinner"
+            {...field}
+          />
+          }
+          />  
+          </FormGroup>
+          <FormGroup
+          >
+            Pick the activities you're interested in (you can select multiple
+            options)
+            <Controller
+            name="activities.trekking"
+            control={control}
+            render={({field}) => <FormControlLabel
+            control={<Checkbox/>}
+            label="Trekking"
+            {...field}
+          />
+          }
+          />
+            
+            <Controller
+            name="activities.sports"
+            control={control}
+            render={({field}) => <FormControlLabel
+            control={<Checkbox/>}
+            label="Sports"
+            {...field}
+          />
+          }
+          />
+
+            <Controller
+            name="activities.yoga"
+            control={control}
+            render={({field}) => <FormControlLabel
+            control={<Checkbox/>}
+            label="Yoga"
             {...field}
           />
           }
