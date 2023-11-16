@@ -10,8 +10,9 @@ export default function Recap() {
   const { register, watch, getValues } = useFormContext();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useForm();
-  let meals = watch("meals.0")
+  let meals = watch("meals")
   let activities = watch("activities")
+
   function arrayDisplayer(obj:{}){
     let objArray = Object.entries(obj);
     let tempArray = [];

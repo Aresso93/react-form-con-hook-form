@@ -7,14 +7,20 @@ import {
   FormGroup,
   Checkbox,
 } from "@mui/material";
-import { Controller, useFormContext} from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 export function PreferencesForm() {
   const { register, control, watch, getValues } = useFormContext();
-  const onSubmit = (data) => console.log('AAAAAAAA', data);
+  const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useFormContext();
-  console.log('PASTI', getValues("meals"))
-  
+  console.log("PASTI", getValues("meals"));
+
+  const lunchOptions = [
+    { id: 1, name: "Breakfast" },
+    { id: 2, name: "Lunch" },
+    { id: 3, name: "Dinner" },
+  ];
+
   return (
     <>
       <div className="form-container">
@@ -46,85 +52,85 @@ export function PreferencesForm() {
               </RadioGroup>
             )}
           />
-          <FormGroup
-          >
+          <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
             <Controller
-            name="meals.0.breakfast"
-            control={control}
-            render={({field}) => <FormControlLabel
-            checked={methods.getValues("meals.0.breakfast")}
-            control={<Checkbox/>}
-            label="Breakfast"
-            {...field}
-          />
-          }
-          />
-            
+              name="meals.breakfast"
+              control={control}
+              render={({ field }) => (
+                <FormControlLabel
+                  checked={methods.getValues("meals.breakfast")}
+                  control={<Checkbox />}
+                  label="Breakfast"
+                  {...field}
+                />
+              )}
+            />
             <Controller
-            name="meals.1.lunch"
-            control={control}
-            render={({field}) => <FormControlLabel
-            checked={methods.getValues("meals.1.lunch")}
-            control={<Checkbox/>}
-            label="Lunch"
-            {...field}
-          />
-          }
-          />
-
+              name="meals.lunch"
+              control={control}
+              render={({ field }) => (
+                <FormControlLabel
+                  checked={methods.getValues("meals.lunch")}
+                  control={<Checkbox />}
+                  label="Lunch"
+                  {...field}
+                />
+              )}
+            />
             <Controller
-            name="meals.2.dinner"
-            control={control}
-            render={({field}) => <FormControlLabel
-            checked={methods.getValues("meals.2.dinner")}
-            control={<Checkbox/>}
-            label="Dinner"
-            {...field}
-          />
-          }
-          />  
+              name="meals.dinner"
+              control={control}
+              render={({ field }) => (
+                <FormControlLabel
+                  checked={methods.getValues("meals.dinner")}
+                  control={<Checkbox />}
+                  label="Dinner"
+                  {...field}
+                />
+              )}
+            />
           </FormGroup>
-          <FormGroup
-          >
+          <FormGroup>
             Pick the activities you're interested in (you can select multiple
             options)
             <Controller
-            name="activities.trekking"
-            control={control}
-            render={({field}) => <FormControlLabel
-            checked={methods.getValues("activities.trekking")}
-            control={<Checkbox/>}
-            label="Trekking"
-            {...field}
-          />
-          }
-          />
-            
+              name="activities.trekking"
+              control={control}
+              render={({ field }) => (
+                <FormControlLabel
+                  checked={methods.getValues("activities.trekking")}
+                  control={<Checkbox />}
+                  label="Trekking"
+                  {...field}
+                />
+              )}
+            />
             <Controller
-            name="activities.sports"
-            control={control}
-            render={({field}) => <FormControlLabel
-            checked={methods.getValues("activities.sports")}
-            control={<Checkbox/>}
-            label="Sports"
-            {...field}
-          />
-          }
-          />
-
+              name="activities.sports"
+              control={control}
+              render={({ field }) => (
+                <FormControlLabel
+                  checked={methods.getValues("activities.sports")}
+                  control={<Checkbox />}
+                  label="Sports"
+                  {...field}
+                />
+              )}
+            />
             <Controller
-            name="activities.yoga"
-            control={control}
-            render={({field}) => <FormControlLabel
-            checked={methods.getValues("activities.yoga")}
-            control={<Checkbox/>}
-            label="Yoga"
-            {...field}
-          />
-          }
-          />  
+              name="activities.yoga"
+              control={control}
+              render={({ field }) => (
+                <FormControlLabel
+                  checked={methods.getValues("activities.yoga")}
+                  control={<Checkbox />}
+                  label="Yoga"
+                  {...field}
+                />
+              )}
+            />
           </FormGroup>
         </FormControl>
       </div>
