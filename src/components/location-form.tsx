@@ -8,10 +8,9 @@ export const destinations = [
   {name: "Mordor", id: 3, label: "Mordor"}
 ]
 
-export function LocationForm() {
+export function LocationForm({errors}) {
 
   const {
-    formState: { errors },
     control,
   } = useFormContext();
   console.log(errors);
@@ -33,15 +32,15 @@ export function LocationForm() {
             </Select>
           )}
         />
-
         <Controller
           name="date of departure"
           control={control}
           render={({ field: { onChange, value } }) => (
             <DatePicker value={value} onChange={onChange} 
             />
-          )}
-        />
+            )}
+            />
+            {errors.dateOfDeparture && <p>{errors.dateOfDeparture.message}</p>}
 
         <Controller
           name="date of return"
@@ -51,6 +50,7 @@ export function LocationForm() {
             />
           )}
         />
+        {errors.dateOfReturn && <p>{errors.dateOfReturn.message}</p>}
       </div>
     </>
   );
