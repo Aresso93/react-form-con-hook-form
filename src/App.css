@@ -76,3 +76,8 @@
   display: flex;
   justify-content: center;
 }
+
+.check-container{
+  display: flex;
+  flex-direction: column;
+}
