@@ -16,9 +16,9 @@ export function PreferencesForm() {
   console.log("PASTI", getValues("meals"));
 
   const lunchOptions = [
-    { id: 1, name: "Breakfast" },
-    { id: 2, name: "Lunch" },
-    { id: 3, name: "Dinner" },
+    { id: 1, name: "Breakfast", label: "Breakfast" },
+    { id: 2, name: "Lunch", label: "Lunch" },
+    { id: 3, name: "Dinner", label: "Dinner" },
   ];
 
   return (
@@ -55,24 +55,26 @@ export function PreferencesForm() {
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
-            
+            <div key={lunchOptions.id}>
+
             {lunchOptions.map(
               (meal) => (
-
+                
                 <Controller
-                  name="meals.dinner"
-                  control={control}
-                  render={({ field }) => (
-                    <FormControlLabel
-                      checked={methods.getValues("meals.dinner")}
-                      control={<Checkbox />}
-                      label="Dinner"
-                      {...field}
-                    />
+                name={lunchOptions[0].name}
+                control={control}
+                render={({ field }) => (
+                  <FormControlLabel
+                  checked={methods.getValues("meals.dinner")}
+                  control={<Checkbox />}
+                  label={lunchOptions[0].label}
+                  {...field}
+                  />
                   )}
-                />
-              )
-            )}
+                  />
+                  )
+                  )}
+                </div>
 
 
           </FormGroup>
