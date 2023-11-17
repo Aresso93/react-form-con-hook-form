@@ -28,6 +28,7 @@ export default function TravellerForm() {
   } = useFormContext();
   console.log("PRIMO FORM", errors);
   
+  
   useEffect(() => {}, []);
 
   return (
@@ -78,7 +79,9 @@ export default function TravellerForm() {
           name="date of birth"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <DatePicker value={value} onChange={onChange} />
+            <DatePicker value={value} onChange={()=> {
+              console.log(value);
+              onChange()}} />
           )}
         />
       </div>
