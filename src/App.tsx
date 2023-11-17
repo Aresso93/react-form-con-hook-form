@@ -4,6 +4,7 @@ import TravellerStepper from "./components/stepper";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export interface IFormInput {
   dateOfBirth: string;
@@ -30,7 +31,7 @@ const schema = yup.object().shape({
 })
 
 function App() {
-  const methods = useForm();
+  const methods = useForm({resolver: yupResolver(schema)});
   const onSubmit = (data) => console.log("Submitted!", data);
 
   return (
