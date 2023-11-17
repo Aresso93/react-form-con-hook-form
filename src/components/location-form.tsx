@@ -2,6 +2,12 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { InputLabel, Select, MenuItem } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
+export const destinations = [
+  {name: "La Spezia", id: 1, label: "La Spezia"},
+  {name: "Cagliari", id: 2, label: "Cagliari"},
+  {name: "Mordor", id: 3, label: "Mordor"}
+]
+
 export function LocationForm() {
 
   const {
@@ -19,9 +25,11 @@ export function LocationForm() {
           defaultValue={""}
           render={({ field }) => (
             <Select {...field}>
-              <MenuItem value="La Spezia">La Spezia</MenuItem>
-              <MenuItem value="Cagliari">Cagliari</MenuItem>
-              <MenuItem value="Mordor">Mordor</MenuItem>
+              {destinations.map((destination) => (
+              
+              <MenuItem key={destination.id} value={destination.name}>{destination.label}</MenuItem>
+
+              ))}
             </Select>
           )}
         />

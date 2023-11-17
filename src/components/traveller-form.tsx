@@ -10,9 +10,9 @@ const schema = yup.object().shape({
 })
 
 export const genders = [
-  { id: 1, name: "male", label: "Male" },
-  { id: 2, name: "female", label: "Female" },
-  { id: 3, name: "other", label: "Other" },
+  { id: 1, name: "Male", label: "Male" },
+  { id: 2, name: "Female", label: "Female" },
+  { id: 3, name: "Other", label: "Other" },
 ];
 
 export default function TravellerForm() {
@@ -47,6 +47,7 @@ console.log('Traveller', getValues())
                 <RadioGroup {...field}>
                   {genders.map((gender) => (
                     <FormControlLabel
+                      key={gender.id}
                       value={gender.name}
                       control={<Radio />}
                       label={gender.label}

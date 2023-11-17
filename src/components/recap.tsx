@@ -1,17 +1,15 @@
 import { useForm, useFormContext } from "react-hook-form";
 import EditModal from "./edit-modal";
 import { LocationForm } from "./location-form";
-import { PreferencesForm, lunchOptions } from "./preference-form";
+import { PreferencesForm } from "./preference-form";
 import TravellerForm from "./traveller-form";
 import { Button, Checkbox, FormControlLabel } from "@mui/material";
-import { useEffect } from "react";
-
 
 export default function Recap() {
   const { register, watch, getValues } = useFormContext();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useForm();
-  let meals = watch("meals")
+  let watchedMeals = watch("meals")
   let activities = watch("activities")
 
   function arrayDisplayer(obj:{}){
@@ -79,17 +77,17 @@ export default function Recap() {
         <span>Method of accommodation: {watch("accommodation")}</span>
        Selected meals: 
        <div>
-        {arrayDisplayer(meals).map(
-          (meals) => (
-            <div>{meals}</div>
+        {arrayDisplayer(watchedMeals).map(
+          (meal) => (
+            <div>{meal}</div>
           )
         )}
        </div> 
        Selected activities: 
        <div>
         {arrayDisplayer(activities).map(
-          (activities) => (
-            <div>{activities}</div>
+          (activity) => (
+            <div>{activity}</div>
           )
         )}
        </div>

@@ -10,21 +10,21 @@ import {
 import { Controller, useFormContext } from "react-hook-form";
 
 export const accommodationSolutions = [
-  { id: 1, name: "hotel", label: "Hotel" },
-  { id: 2, name: "campingSite", label: "Camping Site" },
-  { id: 3, name: "apartment", label: "Apartment" },
+  { id: 1, name: "Hotel", label: "Hotel" },
+  { id: 2, name: "Camping site", label: "Camping Site" },
+  { id: 3, name: "Apartment", label: "Apartment" },
 ];
 
 export const meals = [
-  { id: 1, name: "breakfast", label: "Breakfast" },
-  { id: 2, name: "lunch", label: "Lunch" },
-  { id: 3, name: "dinner", label: "Dinner" },
+  { id: 1, name: "Breakfast", label: "Breakfast" },
+  { id: 2, name: "Lunch", label: "Lunch" },
+  { id: 3, name: "Dinner", label: "Dinner" },
 ];
 
 export const activities = [
-  { id: 1, name: "trekking", label: "Trekking" },
-  { id: 2, name: "sports", label: "Sports" },
-  { id: 3, name: "yoga", label: "Yoga" },
+  { id: 1, name: "Trekking", label: "Trekking" },
+  { id: 2, name: "Sports", label: "Sports" },
+  { id: 3, name: "Yoga", label: "Yoga" },
 ];
 
 export function PreferencesForm() {
@@ -50,6 +50,7 @@ export function PreferencesForm() {
                 <RadioGroup {...field}>
                   {accommodationSolutions.map((accommodation) => (
                     <FormControlLabel
+                      key={accommodation.id}
                       value={accommodation.name}
                       control={<Radio />}
                       label={accommodation.label}
