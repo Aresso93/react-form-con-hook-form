@@ -39,6 +39,7 @@ function App() {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <TravellerStepper />
+          <input type="submit" />
           </form>
         </FormProvider>
       </LocalizationProvider>

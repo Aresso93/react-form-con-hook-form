@@ -73,7 +73,7 @@ export default function TravellerForm() {
             )}
           />
         </div>
-        {errors.email && <p>{errors.gender.message}</p>}
+        {errors.gender && <p>{errors.gender.message}</p>}
         <Controller
           name="date of birth"
           control={control}
