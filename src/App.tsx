@@ -5,6 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { FormProvider, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { TextField } from "@mui/material";
 
 export interface IFormInput {
   dateOfBirth: string;
@@ -17,7 +18,7 @@ export interface IFormInput {
   location: string;
 }
 
-export const schema = yup.object().shape({
+const schema = yup.object().shape({
   fullName: yup.string().required("CAMPONE RICHIESTONE"),
   email: yup.string().required("RICHIESTO").matches(/[A-Za-z]@./),
   gender: yup.string().required("GENERE RICHIESTO"),
@@ -31,12 +32,19 @@ export const schema = yup.object().shape({
 function App() {
   const {
     handleSubmit,
+    register,
     formState: { errors },
   } = useForm<IFormInput>({ resolver: yupResolver(schema) });
   const onSubmit = (data: IFormInput) => console.log("Submitted!", data);
-  console.log('STEVE', errors)
+  console.log('APP', errors)
   return (
     <>
+    <TextField
+          id="name"
+          label="Enter your full name"
+          variant="outlined"
+          {...register("fullName")}
+        />
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <FormProvider {...useForm()}>
           <form onSubmit={handleSubmit(onSubmit)}>

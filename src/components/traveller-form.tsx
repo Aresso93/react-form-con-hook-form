@@ -1,15 +1,13 @@
 import {
-  FormControl,
   FormLabel,
   RadioGroup,
   FormControlLabel,
   Radio,
-  Checkbox,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Controller, FieldErrors, useFormContext, useFormState } from "react-hook-form";
-import { IFormInput, schema } from "../App";
+import { Controller, FieldErrors, useFormContext} from "react-hook-form";
+import { IFormInput } from "../App";
 import { useEffect } from "react";
 
 export const genders = [
@@ -26,9 +24,8 @@ export default function TravellerForm(props: TravellerFormProps) {
   const {
     register,
     control,
-    formState: { errors },
   } = useFormContext();
-  console.log("UUUUUUUU", props.errors);
+  console.log("PRIMO FORM", props.errors);
   
   useEffect(() => {}, [props.errors]);
 

@@ -32,6 +32,7 @@ export function LocationForm({errors}) {
             </Select>
           )}
         />
+        {errors.location && <p>{errors.location.message}</p>}
         <Controller
           name="date of departure"
           control={control}
