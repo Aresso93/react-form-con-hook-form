@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export function useStepperControls(){
-    const [activeStep, setActiveStep] = useState(0);
+export function useStepperControls() {
+  const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -14,11 +14,10 @@ export function useStepperControls(){
 
   return {
     actions: {
-        handleNext,
-        handleBack,
-        handleReset
+      handleNext,
+      handleBack,
+      handleReset,
     },
-    states: {activeStep}
-  }
-
+    states: { activeStep },
+  };
 }

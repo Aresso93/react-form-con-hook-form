@@ -4,6 +4,13 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { Controller, useForm, useFormContext } from 'react-hook-form';
 import * as yup from "yup";
 
+interface IFormInput {
+  dateOfBirth: string;
+  email: string;
+  fullName: string;
+  gender: string;
+}
+
 const schema = yup.object().shape({
   fullName: yup.string().required("CAMPONE RICHIESTONE"),
   email: yup.string().required("RICHIESTO").matches(/[A-Za-z]@./)

@@ -13,6 +13,7 @@ export const accommodationSolutions = [
   { id: 1, name: "Hotel", label: "Hotel" },
   { id: 2, name: "Camping site", label: "Camping Site" },
   { id: 3, name: "Apartment", label: "Apartment" },
+  { id: 4, name: "BnB", label: "BnB" }
 ];
 
 export const meals = [
@@ -28,7 +29,7 @@ export const activities = [
 ];
 
 export function PreferencesForm() {
-  const { register, control, watch, getValues } = useFormContext();
+  const { control, getValues } = useFormContext();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useFormContext();
   console.log("PASTI", getValues("meals"));
@@ -72,6 +73,7 @@ export function PreferencesForm() {
                   render={({ field }) => (
                     <FormControlLabel
                       control={<Checkbox />}
+                      checked={methods.getValues(`meals.${meal.name}`)}
                       label={meal.label}
                       {...field}
                     />

@@ -9,10 +9,10 @@ export default function Recap() {
   const { register, watch, getValues } = useFormContext();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useForm();
-  let watchedMeals = watch("meals")
-  let activities = watch("activities")
+  let watchedMeals = watch("meals");
+  let activities = watch("activities");
 
-  function arrayDisplayer(obj:{}){
+  function arrayDisplayer(obj: {}) {
     let objArray = Object.entries(obj);
     let tempArray = [];
     for (let i = 0; i < objArray.length; i++) {
@@ -21,9 +21,9 @@ export default function Recap() {
         tempArray.push(element[0]);
       }
     }
-    return tempArray
+    return tempArray;
   }
-  
+
   return (
     <>
       <div className="recap-container">
@@ -36,7 +36,6 @@ export default function Recap() {
           PLEASE NOTE: by submitting your data you confirm that we can steal all
           of your gummy bears
         </small>
-       
         <FormControlLabel
           {...register("accept")}
           control={<Checkbox />}
@@ -58,7 +57,7 @@ export default function Recap() {
         <span>Full name: {watch("fullName")}</span>
         <span>Email address: {watch("email")}</span>
         <span>Gender: {watch("gender")}</span>
-        <span>Date of birth: {watch("date of birth").toString()}</span> 
+        <span>Date of birth: {watch("date of birth").toString()}</span>
         <EditModal>
           <TravellerForm />
         </EditModal>
@@ -75,23 +74,18 @@ export default function Recap() {
       <div className="recap-modal">
         Information about your preferences<br></br>
         <span>Method of accommodation: {watch("accommodation")}</span>
-       Selected meals: 
-       <div>
-        {arrayDisplayer(watchedMeals).map(
-          (meal) => (
+        Selected meals:
+        <div>
+          {arrayDisplayer(watchedMeals).map((meal) => (
             <div>{meal}</div>
-          )
-        )}
-       </div> 
-       Selected activities: 
-       <div>
-        {arrayDisplayer(activities).map(
-          (activity) => (
+          ))}
+        </div>
+        Selected activities:
+        <div>
+          {arrayDisplayer(activities).map((activity) => (
             <div>{activity}</div>
-          )
-        )}
-       </div>
-     
+          ))}
+        </div>
         <EditModal>
           <PreferencesForm />
         </EditModal>
