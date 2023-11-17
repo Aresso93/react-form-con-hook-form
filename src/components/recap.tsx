@@ -56,7 +56,7 @@ export default function Recap() {
         <span>Full name: {watch("fullName")}</span>
         <span>Email address: {watch("email")}</span>
         <span>Gender: {watch("gender")}</span>
-        <span>Date of birth: {watch("date of birth").toString()}</span>
+        {/* <span>Date of birth: {watch("date of birth").toString()}</span> */}
         <EditModal>
           <TravellerForm />
         </EditModal>
@@ -64,8 +64,8 @@ export default function Recap() {
       <div className="recap-modal">
         Information about your travel<br></br>
         <span>Destination: {watch("destination")}</span>
-        <span>Date of departure: {watch("date of departure").toString()}</span>
-        <span>Date of return: {watch("date of return").toString()}</span>
+        {/* <span>Date of departure: {watch("date of departure").toString()}</span>
+        <span>Date of return: {watch("date of return").toString()}</span> */}
         <EditModal>
           <LocationForm />
         </EditModal>
