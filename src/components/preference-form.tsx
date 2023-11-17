@@ -10,10 +10,10 @@ import {
 import { Controller, useFormContext } from "react-hook-form";
 
 export const accommodationSolutions = [
-  {id: 1, name: "hotel", label: "Hotel"},
-  {id: 2, name: "campingSite", label: "Campint Site"},
-  {id: 3, name: "apartment", label: "Apartment"},
-]
+  { id: 1, name: "hotel", label: "Hotel" },
+  { id: 2, name: "campingSite", label: "Camping Site" },
+  { id: 3, name: "apartment", label: "Apartment" },
+];
 
 export const meals = [
   { id: 1, name: "breakfast", label: "Breakfast" },
@@ -41,34 +41,24 @@ export function PreferencesForm() {
             Accommodation
           </FormLabel>
 
-        <div className="check-container">
-          {accommodationSolutions.map(accommodation)}
-        </div>
-
-          <Controller
-            name="accommodation"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <RadioGroup {...field}>
-                <FormControlLabel
-                  value="hotel"
-                  control={<Radio />}
-                  label="Hotel"
-                />
-                <FormControlLabel
-                  value="camping site"
-                  control={<Radio />}
-                  label="Camping Site"
-                />
-                <FormControlLabel
-                  value="apartment"
-                  control={<Radio />}
-                  label="Apartment"
-                />
-              </RadioGroup>
-            )}
-          />
+          <div className="check-container">
+            <Controller
+              name="accommodation"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <RadioGroup {...field}>
+                  {accommodationSolutions.map((accommodation) => (
+                    <FormControlLabel
+                      value={accommodation.name}
+                      control={<Radio />}
+                      label={accommodation.label}
+                    />
+                  ))}
+                </RadioGroup>
+              )}
+            />
+          </div>
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)

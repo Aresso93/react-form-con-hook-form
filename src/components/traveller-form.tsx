@@ -9,6 +9,12 @@ const schema = yup.object().shape({
   email: yup.string().required("RICHIESTO").matches(/[A-Za-z]@./)
 })
 
+export const genders = [
+  { id: 1, name: "male", label: "Male" },
+  { id: 2, name: "female", label: "Female" },
+  { id: 3, name: "other", label: "Other" },
+];
+
 export default function TravellerForm() {
 
 const {register, control, getValues, formState:{errors}} = useFormContext();
@@ -31,28 +37,25 @@ console.log('Traveller', getValues())
     />
    {errors.email && <p>{errors.email?.message}</p>}
 
-      <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
-      <Controller
-        name="gender"
-        control={control}
-        render={({ field }) => <RadioGroup
-       {...field}
-        >
-       
-       <FormControlLabel 
-        value="male" control={<Radio 
-          
-        />} label="male" />
-        <FormControlLabel 
-        value="female" control={<Radio 
-          
-        />} label="female" />
-      <FormControlLabel 
-        value="other" control={<Radio 
-          
-        />} label="other" />
-        </RadioGroup>}
-      />
+    <FormLabel id="demo-radio-buttons-group-label">Select your gender</FormLabel>
+    <div className="check-container">
+            <Controller
+              name="gender"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <RadioGroup {...field}>
+                  {genders.map((gender) => (
+                    <FormControlLabel
+                      value={gender.name}
+                      control={<Radio />}
+                      label={gender.label}
+                    />
+                  ))}
+                </RadioGroup>
+              )}
+            />
+          </div>
       
      <Controller
      name='date of birth'
