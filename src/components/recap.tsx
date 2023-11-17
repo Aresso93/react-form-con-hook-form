@@ -1,10 +1,11 @@
 import { useForm, useFormContext } from "react-hook-form";
 import EditModal from "./edit-modal";
 import { LocationForm } from "./location-form";
-import { PreferencesForm } from "./preference-form";
+import { PreferencesForm, lunchOptions } from "./preference-form";
 import TravellerForm from "./traveller-form";
 import { Button, Checkbox, FormControlLabel } from "@mui/material";
 import { useEffect } from "react";
+
 
 export default function Recap() {
   const { register, watch, getValues } = useFormContext();

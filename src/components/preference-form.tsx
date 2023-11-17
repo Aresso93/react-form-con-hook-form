@@ -9,17 +9,17 @@ import {
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
+export const meals = [
+   { id: 1, name: "breakfast", label: "Breakfast" },
+   { id: 2, name: "lunch", label: "Lunch" },
+   { id: 3, name: "dinner", label: "Dinner" },
+ ];
 export function PreferencesForm() {
   const { register, control, watch, getValues } = useFormContext();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const methods = useFormContext();
   console.log("PASTI", getValues("meals"));
 
-  const lunchOptions = [
-    { id: 1, name: "Breakfast", label: "Breakfast" },
-    { id: 2, name: "Lunch", label: "Lunch" },
-    { id: 3, name: "Dinner", label: "Dinner" },
-  ];
 
   return (
     <>
@@ -55,19 +55,19 @@ export function PreferencesForm() {
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
-            <div key={lunchOptions.id}>
+            <div>
 
-            {lunchOptions.map(
+            {meals.map(
               (meal) => (
                 
                 <Controller
-                name={lunchOptions[0].name}
+                key={meal.id}
+                name={`meals.${meal.name}`}
                 control={control}
                 render={({ field }) => (
                   <FormControlLabel
-                  checked={methods.getValues("meals.dinner")}
                   control={<Checkbox />}
-                  label={lunchOptions[0].label}
+                  label={meal.label}
                   {...field}
                   />
                   )}
