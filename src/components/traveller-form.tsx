@@ -6,8 +6,7 @@ import {
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Controller, FieldErrors, useFormContext} from "react-hook-form";
-import { IFormInput } from "../App";
+import { Controller, useFormContext} from "react-hook-form";
 import { useEffect } from "react";
 
 export const genders = [
@@ -16,18 +15,20 @@ export const genders = [
   { id: 3, name: "Other", label: "Other" },
 ];
 
-export interface TravellerFormProps{
-  errors: FieldErrors<IFormInput>
-}
+// export interface TravellerFormProps{
+//   errors: FieldErrors<IFormInput>,
+//   handleSubmitProp: UseFormHandleSubmit<FieldValues, undefined>
+// }
 
-export default function TravellerForm(props: TravellerFormProps) {
+export default function TravellerForm() {
   const {
     register,
     control,
+    formState: {errors},
   } = useFormContext();
-  console.log("PRIMO FORM", props.errors);
+  console.log("PRIMO FORM", errors);
   
-  useEffect(() => {}, [props.errors]);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -39,7 +40,7 @@ export default function TravellerForm(props: TravellerFormProps) {
           {...register("fullName")}
         />
 
-        {props.errors.fullName && <p>{props.errors.fullName.message}</p>}
+        {errors.fullName && <p>{errors.fullName.message}</p>}
 
         <TextField
           id="email"
@@ -48,7 +49,7 @@ export default function TravellerForm(props: TravellerFormProps) {
           {...register("email")}
         />
 
-        {props.errors.email && <p>{props.errors.email.message}</p>}
+        {errors.email && <p>{errors.email.message}</p>}
 
         <FormLabel id="demo-radio-buttons-group-label">
           Select your gender
@@ -72,7 +73,7 @@ export default function TravellerForm(props: TravellerFormProps) {
             )}
           />
         </div>
-        {props.errors.email && <p>{props.errors.gender.message}</p>}
+        {errors.email && <p>{errors.gender.message}</p>}
         <Controller
           name="date of birth"
           control={control}
@@ -81,7 +82,7 @@ export default function TravellerForm(props: TravellerFormProps) {
           )}
         />
       </div>
-      {props.errors.dateOfBirth && <p>{props.errors.dateOfBirth.message}</p>}
+      {errors.dateOfBirth && <p>{errors.dateOfBirth.message}</p>}
     </>
   );
 }

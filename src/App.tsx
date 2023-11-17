@@ -16,17 +16,19 @@ export interface IFormInput {
   dateOfDeparture: string;
   dateOfReturn: string;
   location: string;
+  test: string;
 }
 
 const schema = yup.object().shape({
-  fullName: yup.string().required("CAMPONE RICHIESTONE"),
+  fullName: yup.string().required("CAMPO RICHIESTO"),
   email: yup.string().required("RICHIESTO").matches(/[A-Za-z]@./),
   gender: yup.string().required("GENERE RICHIESTO"),
   dateOfBirth: yup.string().required("DATA DI NASCITA LA VOGLIO"),
   accommodation: yup.string().required("SCEGLI DOVE DORMIRE"),
   dateOfDeparture: yup.string().required("SCEGLI UNA DATA"),
   dateOfReturn: yup.string().required("SCEGLI UNA DATA PER IL RITORNO"),
-  location: yup.string().required("DOVE TE NE VAI")
+  location: yup.string().required("DOVE TE NE VAI"),
+  test: yup.string().required("TEST RICHIESTO")
 })
 
 function App() {
@@ -40,16 +42,17 @@ function App() {
   return (
     <>
     <TextField
-          id="name"
-          label="Enter your full name"
+          id="test"
+          label="AAA"
           variant="outlined"
-          {...register("fullName")}
+          {...register("test")}
         />
+        {errors.test && <p>{errors.test.message}</p>}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <FormProvider {...useForm()}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <TravellerStepper errors={errors}/>
-          <input type="submit" />
+            <TravellerStepper/>
+          <input type="submit"/>
           </form>
         </FormProvider>
       </LocalizationProvider>

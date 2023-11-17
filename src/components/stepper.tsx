@@ -9,18 +9,18 @@ import { LocationForm } from "./location-form";
 import { PreferencesForm } from "./preference-form";
 import TravellerForm from "./traveller-form";
 import Recap from "./recap";
-import { FieldErrors, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { useStepperControls } from "./custom-hooks/use-stepper-controls";
-import { IFormInput } from "../App";
 
 const steps = ["You", "Your destination", "Your preferences"];
 const onSubmit = (data) => console.log("AAAAAAAA", data);
 
-export interface TravellerStepperProps{
-  errors: FieldErrors<IFormInput>
-}
+// export interface TravellerStepperProps{
+//   errors: FieldErrors<IFormInput>,
+//   handleSubmitProp: UseFormHandleSubmit<FieldValues, undefined>
+// }
 
-export default function TravellerStepper(props: TravellerStepperProps) {
+export default function TravellerStepper() {
   const {handleSubmit}= useFormContext();
   const stepperControls = useStepperControls();
   return (
@@ -57,9 +57,9 @@ export default function TravellerStepper(props: TravellerStepperProps) {
             Step {stepperControls.states.activeStep + 1}/{steps.length}
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-            {stepperControls.states.activeStep === 0 && <TravellerForm errors={props.errors}/>}
+            {stepperControls.states.activeStep === 0 && <TravellerForm />}
 
-            {stepperControls.states.activeStep === 1 && <LocationForm errors={props.errors}/>}
+            {stepperControls.states.activeStep === 1 && <LocationForm/>}
 
             {stepperControls.states.activeStep === 2 && <PreferencesForm />}
             <Box sx={{ flex: "1 1 auto" }} />

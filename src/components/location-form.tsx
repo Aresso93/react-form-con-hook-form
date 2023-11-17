@@ -8,12 +8,13 @@ export const destinations = [
   {name: "Mordor", id: 3, label: "Mordor"}
 ]
 
-export function LocationForm({errors}) {
+export function LocationForm() {
 
   const {
     control,
+    formState:{errors}
   } = useFormContext();
-  console.log(errors);
+
   return (
     <>
       <div className="form-container">
