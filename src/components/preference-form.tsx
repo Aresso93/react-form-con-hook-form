@@ -30,8 +30,6 @@ export const activities = [
 
 export function PreferencesForm() {
   const { control, getValues } = useFormContext();
-  const onSubmit = (data) => console.log("AAAAAAAA", data);
-  const methods = useFormContext();
   console.log("PASTI", getValues("meals"));
 
   return (
@@ -73,7 +71,7 @@ export function PreferencesForm() {
                   render={({ field }) => (
                     <FormControlLabel
                       control={<Checkbox />}
-                      checked={methods.getValues(`meals.${meal.name}`)}
+                      checked={getValues(`meals.${meal.name}`)}
                       label={meal.label}
                       {...field}
                     />

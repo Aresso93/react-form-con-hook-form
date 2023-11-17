@@ -1,4 +1,4 @@
-import { useForm, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import EditModal from "./edit-modal";
 import { LocationForm } from "./location-form";
 import { PreferencesForm } from "./preference-form";
@@ -6,9 +6,8 @@ import TravellerForm from "./traveller-form";
 import { Button, Checkbox, FormControlLabel } from "@mui/material";
 
 export default function Recap() {
-  const { register, watch, getValues } = useFormContext();
+  const { register, watch, getValues, handleSubmit } = useFormContext();
   const onSubmit = (data) => console.log("AAAAAAAA", data);
-  const methods = useForm();
   let watchedMeals = watch("meals");
   let activities = watch("activities");
 
@@ -43,7 +42,7 @@ export default function Recap() {
           checked={watch("accept")}
         />
         {getValues("accept") === true ? (
-          <Button variant="outlined" onClick={methods.handleSubmit(onSubmit)}>
+          <Button variant="outlined" onClick={handleSubmit(onSubmit)}>
             Submit
           </Button>
         ) : (

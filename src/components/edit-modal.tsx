@@ -6,10 +6,10 @@ import {
   DialogActions,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 export default function EditModal({ children }) {
-  const methods = useForm();
+  const {handleSubmit} = useFormContext();
 
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const [open, setOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function EditModal({ children }) {
           <DialogActions>
             <Button
               onClick={() => {
-                methods.handleSubmit(onSubmit);
+                handleSubmit(onSubmit);
                 handleClose();
               }}
             >

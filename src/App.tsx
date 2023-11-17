@@ -6,7 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 
 function App() {
   const methods = useForm();
-  const onSubmit = (data) => console.log("AAAAAAAA", data);
+  const onSubmit = (data) => console.log("Submitted!", data);
 
   return (
     <>
@@ -14,7 +14,6 @@ function App() {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <TravellerStepper />
-            <input type="submit" />
           </form>
         </FormProvider>
       </LocalizationProvider>

@@ -16,7 +16,7 @@ const steps = ["You", "Your destination", "Your preferences"];
 const onSubmit = (data) => console.log("AAAAAAAA", data);
 
 export default function TravellerStepper() {
-  const methods = useFormContext();
+  const {handleSubmit}= useFormContext();
   const stepperControls = useStepperControls();
   return (
     <Box sx={{ width: "100%" }}>
@@ -63,7 +63,7 @@ export default function TravellerStepper() {
             <Button
               onClick={() => {
                 stepperControls.actions.handleNext();
-                methods.handleSubmit(onSubmit);
+                handleSubmit(onSubmit);
               }}
             >
               {stepperControls.states.activeStep === steps.length - 1
