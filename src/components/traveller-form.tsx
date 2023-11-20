@@ -33,26 +33,28 @@ export default function TravellerForm() {
           id="name"
           label="Enter your full name"
           variant="outlined"
-          {...register("fullName")}
+          {...register("page1.fullName")}
         />
 
-        {errors.fullName && !isDirty && <p>{errors.fullName.message}</p>}
+        {errors.fullName && isDirty && <p>{errors.fullName.message}</p>}
+        {errors.fullName && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <TextField
           id="email"
           label="Enter your email address"
           variant="outlined"
-          {...register("email")}
+          {...register("page1.email")}
         />
 
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && isDirty && <p>{errors.email.message}</p>}
+        {errors.email && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <FormLabel id="demo-radio-buttons-group-label">
           Select your gender
         </FormLabel>
         <div className="check-container">
           <Controller
-            name="gender"
+            name="page1.gender"
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
@@ -71,7 +73,7 @@ export default function TravellerForm() {
         </div>
         {errors.gender && <p>{errors.gender.message}</p>}
         <Controller
-          name="dateOfBirth"
+          name="page1.dateOfBirth"
           control={control}
           render={({ field: { onChange, value } }) => (
             <DatePicker value={value} onChange={onChange} />

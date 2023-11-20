@@ -30,7 +30,6 @@ export const activities = [
 
 export function PreferencesForm() {
   const { control, getValues, formState: {errors} } = useFormContext();
-  console.log("PASTI", getValues("meals"));
 
   return (
     <>
@@ -42,7 +41,7 @@ export function PreferencesForm() {
 
           <div className="check-container">
             <Controller
-              name="accommodation"
+              name="page3.accommodation"
               control={control}
               rules={{ required: true }}
               render={({ field }) => (

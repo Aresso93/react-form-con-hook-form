@@ -13,14 +13,9 @@ import { useFormContext } from "react-hook-form";
 import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 
 const steps = ["You", "Your destination", "Your preferences"];
-const onSubmit = (data) => console.log("CCCCCCC", data);
-
-// export interface TravellerStepperProps{
-//   errors: FieldErrors<IFormInput>,
-//   handleSubmitProp: UseFormHandleSubmit<FieldValues, undefined>
-// }
 
 export default function TravellerStepper() {
+  const onSubmit = (data) => console.log("CCCCCCC", data);
   const {handleSubmit}= useFormContext();
   const stepperControls = useStepperControls();
   return (
@@ -67,8 +62,8 @@ export default function TravellerStepper() {
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             <Button
               onClick={() => {
+                // handleSubmit(onSubmit)
                 stepperControls.actions.handleNext();
-                handleSubmit(onSubmit);
               }}
             >
               {stepperControls.states.activeStep === steps.length - 1

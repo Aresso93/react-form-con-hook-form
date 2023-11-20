@@ -53,26 +53,26 @@ export default function Recap() {
       </div>
       <div className="recap-modal">
         Your personal information<br></br>
-        <span>Full name: {watch("fullName")}</span>
-        <span>Email address: {watch("email")}</span>
-        <span>Gender: {watch("gender")}</span>
-        <span>Date of birth: {watch("dateOfBirth").toString()}</span>
+        <span>Full name: {watch("page1.fullName")}</span>
+        <span>Email address: {watch("page1.email")}</span>
+        <span>Gender: {watch("page1.gender")}</span>
+        <span>Date of birth: {watch("page1.dateOfBirth").toString()}</span>
         <EditModal>
           <TravellerForm />
         </EditModal>
       </div>
       <div className="recap-modal">
         Information about your travel<br></br>
-        <span>Destination: {watch("destination")}</span>
-        <span>Date of departure: {watch("dateOfDeparture").toString()}</span>
-        <span>Date of return: {watch("dateOfReturn").toString()}</span> 
+        <span>Destination: {watch("page2.destination")}</span>
+        <span>Date of departure: {watch("page2.dateOfDeparture").toString()}</span>
+        <span>Date of return: {watch("page2.dateOfReturn").toString()}</span> 
         <EditModal>
           <LocationForm />
         </EditModal>
       </div>
       <div className="recap-modal">
         Information about your preferences<br></br>
-        <span>Method of accommodation: {watch("accommodation")}</span>
+        <span>Method of accommodation: {watch("page3.accommodation")}</span>
         Selected meals:
         <div>
           {arrayDisplayer(watchedMeals).map((meal) => (

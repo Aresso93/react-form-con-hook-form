@@ -4,6 +4,7 @@ export function useStepperControls() {
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    console.log('666666666666')
   };
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
