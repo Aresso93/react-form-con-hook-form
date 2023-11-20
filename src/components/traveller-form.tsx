@@ -21,8 +21,7 @@ export default function TravellerForm() {
     control,
     formState: {errors, isDirty},
   } = useFormContext();
-  console.log("PRIMO FORM", errors);
-  
+  console.log("PRIMO FORM", errors.page1);
   
   useEffect(() => {}, []);
 
@@ -36,8 +35,8 @@ export default function TravellerForm() {
           {...register("page1.fullName")}
         />
 
-        {errors.fullName && isDirty && <p>{errors.fullName.message}</p>}
-        {errors.fullName && !isDirty && <p>CAMPO NECESSARIO</p>}
+        {errors.page1?.fullName && isDirty ? <p>{errors.page1?.fullName.message}</p> : null}
+        {errors.page1 && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <TextField
           id="email"
@@ -46,7 +45,7 @@ export default function TravellerForm() {
           {...register("page1.email")}
         />
 
-        {errors.email && isDirty && <p>{errors.email.message}</p>}
+        {/* {errors.email && isDirty && <p>{errors.email.message}</p>} */}
         {errors.email && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <FormLabel id="demo-radio-buttons-group-label">
