@@ -18,6 +18,7 @@ export default function TravellerStepper() {
 
   
   const {handleSubmit, formState:{errors}, trigger}= useFormContext();
+ 
   const stepperControls = useStepperControls();
   console.log('Step numero ', stepperControls.states.activeStep)
   console.log('ERRORI PAGINA 1', errors.page1)
@@ -96,8 +97,9 @@ export default function TravellerStepper() {
                   conditionalStepper() 
                 } else if(stepperControls.states.activeStep === 2){
                   trigger("page3")
+                } else {
+                  stepperControls.actions.handleNext()
                 }
-                stepperControls.actions.handleNext()
               }}
             >
               {stepperControls.states.activeStep === steps.length - 1
