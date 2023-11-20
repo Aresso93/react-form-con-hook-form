@@ -7,33 +7,34 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export interface IFormInput {
-  dateOfBirth: string;
+  dateOfBirth: Date;
   email: string;
   fullName: string;
   gender: string;
   accommodation: string;
-  dateOfDeparture: string;
-  dateOfReturn: string;
+  dateOfDeparture: Date;
+  dateOfReturn: Date;
   location: string;
   test: string;
 }
+
+let olderThan18Yob = new Date().getFullYear() - 18
+let today = new Date()
 
 const schema = yup.object().shape({
   fullName: yup.string().required("CAMPO RICHIESTO"),
   email: yup.string().required("RICHIESTO").email('INSERISCI UNA MAIL VALIDA'),
   gender: yup.string().required("GENERE RICHIESTO"),
-  dateOfBirth: yup.date().required("DATA DI NASCITA LA VOGLIO"),
+  dateOfBirth: yup.date().required("DATA DI NASCITA LA VOGLIO").max(new Date(olderThan18Yob, 0, 1), 'SOLO MAGGIORENNI'),
   accommodation: yup.string().required("SCEGLI DOVE DORMIRE"),
-  dateOfDeparture: yup.string().required("SCEGLI UNA DATA"),
-  dateOfReturn: yup.string().required("SCEGLI UNA DATA PER IL RITORNO"),
+  dateOfDeparture: yup.date().required("SCEGLI UNA DATA PER LA PARTENZA").min(today, 'STAI VIAGGIANDO NELLO SPAZIO NON NEL TEMPO'),
+  dateOfReturn: yup.date().required("SCEGLI UNA DATA PER IL RITORNO").min(today, 'STAI VIAGGIANDO NELLO SPAZIO NON NEL TEMPO'),
   destination: yup.string().required("DOVE TE NE VAI"),
   test: yup.string().required("TEST RICHIESTO")
 })
 
-console.log(schema);
-
-
 function App() {
+  console.log('OGGI', today)
   const methods = useForm({resolver: yupResolver(schema)});
   const onSubmit = (data) => console.log("Submitted!", data);
 

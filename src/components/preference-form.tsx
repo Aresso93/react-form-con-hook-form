@@ -29,7 +29,7 @@ export const activities = [
 ];
 
 export function PreferencesForm() {
-  const { control, getValues } = useFormContext();
+  const { control, getValues, formState: {errors} } = useFormContext();
   console.log("PASTI", getValues("meals"));
 
   return (
@@ -59,6 +59,7 @@ export function PreferencesForm() {
               )}
             />
           </div>
+          {errors.accommodation?.message && <p>{errors.accommodation.message}</p>}
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
