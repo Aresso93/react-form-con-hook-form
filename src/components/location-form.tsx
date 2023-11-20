@@ -15,7 +15,7 @@ export function LocationForm() {
     formState:{errors, isDirty}
   } = useFormContext();
   
-  console.log("SECONDO FORM", errors);
+  console.log("ERRORI PAGINA 2", errors);
 
   return (
     <>

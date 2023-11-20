@@ -11,20 +11,36 @@ import TravellerForm from "./traveller-form";
 import Recap from "./recap";
 import { useFormContext } from "react-hook-form";
 import { useStepperControls } from "./custom-hooks/use-stepper-controls";
+import { useEffect } from "react";
 
 const steps = ["You", "Your destination", "Your preferences"];
 export default function TravellerStepper() {
-  const {handleSubmit}= useFormContext();
+
+  const {handleSubmit, formState:{errors}, trigger}= useFormContext();
   const stepperControls = useStepperControls();
   console.log('Step numero ', stepperControls.states.activeStep)
+  console.log('ERRORI PAGINA 1', errors.page1)
 
+  function conditionalStepper(){
+    if (stepperControls.states.activeStep === 0 && errors.page1 === undefined){
+      stepperControls.actions.handleNext()
+    } else if (stepperControls.states.activeStep === 1 && errors.page2 === undefined){
+      stepperControls.actions.handleNext()
+    } else if (stepperControls.states.activeStep === 2 && errors.page3 === undefined){
+      stepperControls.actions.handleNext()
+    }
+  }
 
-  // se step è 1 e errori pagina 1 tutti undefined, allora avanti
-
-  // altrimenti se step è 2 e errori pagina 2 tutti undefined, allora avanti
-
-  // altrimenti se step è 3 e errori pagina 3 tutti undefined, allora avanti
-
+  function test(step){
+    step = stepperControls.states.activeStep
+    if (step === 0) {
+      trigger("page1")
+    } else if (step === 1){
+      trigger("page2")
+    } else if (step === 2){
+      trigger("page3")
+    }
+  }
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -69,14 +85,21 @@ export default function TravellerStepper() {
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             <Button
-              onClick={() => {
-                stepperControls.actions.handleNext();
+              onClick={()=> {
+                if(stepperControls.states.activeStep === 0){
+                  trigger("page1")
+                  conditionalStepper()
+                } else if(stepperControls.states.activeStep === 1){
+                  trigger("page2")
+                  conditionalStepper()
+                }
               }}
             >
               {stepperControls.states.activeStep === steps.length - 1
                 ? "Finish"
                 : "Next"}
             </Button>
+            
           </Box>
         </React.Fragment>
       )}

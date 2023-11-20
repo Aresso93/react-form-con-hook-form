@@ -28,7 +28,7 @@ let today = new Date()
 
 const schema = yup.object().shape({
   page1: yup.object().shape({ 
-    fullName: yup.string().nullable().required("CAMPO RICHIESTO").min(6, 'TROPPO CORTO').matches(/[A-Za-z] [A-Za-z]/, 'VOGLIO ANCHE IL COGNOME (E NIENTE CARATTERI SPECIALI O NUMERI)'),
+    fullName: yup.string().defined().strict(true).required("CAMPO RICHIESTO").min(6, 'TROPPO CORTO').matches(/[A-Za-z] [A-Za-z]/, 'VOGLIO ANCHE IL COGNOME (E NIENTE CARATTERI SPECIALI O NUMERI)'),
     email: yup.string().required("RICHIESTO").email('INSERISCI UNA MAIL VALIDA'),
     gender: yup.string().required("GENERE RICHIESTO"),
     dateOfBirth: yup.date().required("DATA DI NASCITA LA VOGLIO").max(new Date(olderThan18Yob, 0, 1), 'SOLO MAGGIORENNI'),

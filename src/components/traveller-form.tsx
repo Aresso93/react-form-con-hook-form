@@ -21,7 +21,7 @@ export default function TravellerForm() {
     control,
     formState: {errors, isDirty},
   } = useFormContext();
-  console.log("PRIMO FORM", errors.page1);
+  console.log("PRIMO FORM", errors);
   
   useEffect(() => {}, []);
 

@@ -22,18 +22,4 @@ export function useStepperControls() {
     states: { activeStep },
   };
 }
-
-// se step è 1 e errori pagina 1 tutti undefined, allora avanti
-
-  // altrimenti se step è 2 e errori pagina 2 tutti undefined, allora avanti
-
-  // altrimenti se step è 3 e errori pagina 3 tutti undefined, allora avanti
-
-
-  if (stepperControls.states.activeStep === 0 && errors.page1 === undefined){
-    stepperControls.actions.handleNext()
-  } else if (stepperControls.states.activeStep === 1 && errors.page2 === undefined){
-    stepperControls.actions.handleNext()
-  } else if (stepperControls.states.activeStep === 2 && errors.page3 === undefined){
-    stepperControls.actions.handleNext()
-  }
+  
