@@ -15,16 +15,11 @@ export const genders = [
   { id: 3, name: "Other", label: "Other" },
 ];
 
-// export interface TravellerFormProps{
-//   errors: FieldErrors<IFormInput>,
-//   handleSubmitProp: UseFormHandleSubmit<FieldValues, undefined>
-// }
-
 export default function TravellerForm() {
   const {
     register,
     control,
-    formState: {errors},
+    formState: {errors, isDirty},
   } = useFormContext();
   console.log("PRIMO FORM", errors);
   
@@ -41,7 +36,7 @@ export default function TravellerForm() {
           {...register("fullName")}
         />
 
-        {errors.fullName && <p>{errors.fullName.message}</p>}
+        {errors.fullName && !isDirty && <p>{errors.fullName.message}</p>}
 
         <TextField
           id="email"

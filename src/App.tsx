@@ -22,19 +22,17 @@ let olderThan18Yob = new Date().getFullYear() - 18
 let today = new Date()
 
 const schema = yup.object().shape({
-  fullName: yup.string().required("CAMPO RICHIESTO"),
+  fullName: yup.string().required("CAMPO RICHIESTO").min(6, 'TROPPO CORTO'),
   email: yup.string().required("RICHIESTO").email('INSERISCI UNA MAIL VALIDA'),
   gender: yup.string().required("GENERE RICHIESTO"),
   dateOfBirth: yup.date().required("DATA DI NASCITA LA VOGLIO").max(new Date(olderThan18Yob, 0, 1), 'SOLO MAGGIORENNI'),
-  accommodation: yup.string().required("SCEGLI DOVE DORMIRE"),
   dateOfDeparture: yup.date().required("SCEGLI UNA DATA PER LA PARTENZA").min(today, 'STAI VIAGGIANDO NELLO SPAZIO NON NEL TEMPO'),
   dateOfReturn: yup.date().required("SCEGLI UNA DATA PER IL RITORNO").min(today, 'STAI VIAGGIANDO NELLO SPAZIO NON NEL TEMPO'),
   destination: yup.string().required("DOVE TE NE VAI"),
-  test: yup.string().required("TEST RICHIESTO")
+  accommodation: yup.string().required("SCEGLI DOVE DORMIRE"),
 })
 
 function App() {
-  console.log('OGGI', today)
   const methods = useForm({resolver: yupResolver(schema)});
   const onSubmit = (data) => console.log("Submitted!", data);
 
