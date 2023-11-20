@@ -76,12 +76,10 @@ export default function TravellerForm() {
         </div>
         {errors.gender && <p>{errors.gender.message}</p>}
         <Controller
-          name="date of birth"
+          name="dateOfBirth"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <DatePicker value={value} onChange={()=> {
-              console.log(value);
-              onChange()}} />
+            <DatePicker value={value} onChange={onChange} />
           )}
         />
       </div>

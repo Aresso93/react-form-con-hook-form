@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export interface IFormInput {
-  dateOfBirth: string;
+  dateOfBirth: Date;
   email: string;
   fullName: string;
   gender: string;
@@ -20,15 +20,18 @@ export interface IFormInput {
 
 const schema = yup.object().shape({
   fullName: yup.string().required("CAMPO RICHIESTO"),
-  email: yup.string().required("RICHIESTO").matches(/[A-Za-z]@./),
+  email: yup.string().required("RICHIESTO").email('INSERISCI UNA MAIL VALIDA'),
   gender: yup.string().required("GENERE RICHIESTO"),
-  dateOfBirth: yup.string().required("DATA DI NASCITA LA VOGLIO"),
+  dateOfBirth: yup.date().required("DATA DI NASCITA LA VOGLIO"),
   accommodation: yup.string().required("SCEGLI DOVE DORMIRE"),
   dateOfDeparture: yup.string().required("SCEGLI UNA DATA"),
   dateOfReturn: yup.string().required("SCEGLI UNA DATA PER IL RITORNO"),
-  location: yup.string().required("DOVE TE NE VAI"),
+  destination: yup.string().required("DOVE TE NE VAI"),
   test: yup.string().required("TEST RICHIESTO")
 })
+
+console.log(schema);
+
 
 function App() {
   const methods = useForm({resolver: yupResolver(schema)});

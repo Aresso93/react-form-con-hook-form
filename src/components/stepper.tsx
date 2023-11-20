@@ -13,7 +13,7 @@ import { useFormContext } from "react-hook-form";
 import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 
 const steps = ["You", "Your destination", "Your preferences"];
-const onSubmit = (data) => console.log("AAAAAAAA", data);
+const onSubmit = (data) => console.log("CCCCCCC", data);
 
 // export interface TravellerStepperProps{
 //   errors: FieldErrors<IFormInput>,

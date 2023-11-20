@@ -33,9 +33,9 @@ export function LocationForm() {
             </Select>
           )}
         />
-        {errors.location && <p>{errors.location.message}</p>}
+        {errors.destination && <p>{errors.destination.message}</p>}
         <Controller
-          name="date of departure"
+          name="dateOfDeparture"
           control={control}
           render={({ field: { onChange, value } }) => (
             <DatePicker value={value} onChange={onChange} 
@@ -45,7 +45,7 @@ export function LocationForm() {
             {errors.dateOfDeparture && <p>{errors.dateOfDeparture.message}</p>}
 
         <Controller
-          name="date of return"
+          name="dateOfReturn"
           control={control}
           render={({ field: { onChange, value } }) => (
             <DatePicker value={value} onChange={onChange} 
