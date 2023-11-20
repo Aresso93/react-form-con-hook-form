@@ -16,10 +16,12 @@ import { useEffect } from "react";
 const steps = ["You", "Your destination", "Your preferences"];
 export default function TravellerStepper() {
 
+  
   const {handleSubmit, formState:{errors}, trigger}= useFormContext();
   const stepperControls = useStepperControls();
   console.log('Step numero ', stepperControls.states.activeStep)
   console.log('ERRORI PAGINA 1', errors.page1)
+
 
   function conditionalStepper(){
     if (stepperControls.states.activeStep === 0 && errors.page1 === undefined){
