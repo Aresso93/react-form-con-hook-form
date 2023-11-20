@@ -35,7 +35,7 @@ export default function TravellerForm() {
           {...register("page1.fullName")}
         />
 
-        {errors.page1?.fullName && isDirty ? <p>{errors.page1?.fullName.message}</p> : null}
+        {errors.page1?.fullName && isDirty && <p>{errors.page1?.fullName.message}</p>}
         {errors.page1 && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <TextField
@@ -45,7 +45,7 @@ export default function TravellerForm() {
           {...register("page1.email")}
         />
 
-        {/* {errors.email && isDirty && <p>{errors.email.message}</p>} */}
+       {errors.page1?.email && isDirty ? <p>{errors.page1?.email.message}</p> : null}
         {errors.email && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <FormLabel id="demo-radio-buttons-group-label">
@@ -70,7 +70,7 @@ export default function TravellerForm() {
             )}
           />
         </div>
-        {errors.gender && <p>{errors.gender.message}</p>}
+        {errors.page1?.gender && <p>{errors.page1.gender.message}</p>}
         <Controller
           name="page1.dateOfBirth"
           control={control}
@@ -79,7 +79,7 @@ export default function TravellerForm() {
           )}
         />
       </div>
-      {errors.dateOfBirth && <p>{errors.dateOfBirth.message}</p>}
+      {errors.page1?.dateOfBirth && <p>{errors.page1?.dateOfBirth.message}</p>}
     </>
   );
 }

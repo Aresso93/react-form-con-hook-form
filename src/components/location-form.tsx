@@ -12,7 +12,7 @@ export function LocationForm() {
   
   const {
     control,
-    formState:{errors}
+    formState:{errors, isDirty}
   } = useFormContext();
   
   console.log("SECONDO FORM", errors);
@@ -35,7 +35,7 @@ export function LocationForm() {
             </Select>
           )}
         />
-        {errors.destination && <p>{errors.destination.message}</p>}
+        {errors.page2?.destination && !isDirty && <p>{errors.page2?.destination.message}</p>}
         <Controller
           name="page2.dateOfDeparture"
           control={control}
@@ -44,7 +44,7 @@ export function LocationForm() {
             />
             )}
             />
-            {errors.dateOfDeparture && <p>{errors.dateOfDeparture.message}</p>}
+            {errors.page2?.dateOfDeparture && !isDirty && <p>{errors.page2?.dateOfDeparture.message}</p>}
 
         <Controller
           name="page2.dateOfReturn"
@@ -54,7 +54,7 @@ export function LocationForm() {
             />
           )}
         />
-        {errors.dateOfReturn && <p>{errors.dateOfReturn.message}</p>}
+         {errors.page2?.dateOfReturn && !isDirty && <p>{errors.page2?.dateOfReturn.message}</p>}
       </div>
     </>
   );

@@ -29,7 +29,7 @@ export const activities = [
 ];
 
 export function PreferencesForm() {
-  const { control, getValues, formState: {errors} } = useFormContext();
+  const { control, getValues, formState: {errors, isDirty} } = useFormContext();
   console.log("TERZO FORM", errors);
 
   return (
@@ -59,7 +59,7 @@ export function PreferencesForm() {
               )}
             />
           </div>
-          {errors.accommodation?.message && <p>{errors.accommodation.message}</p>}
+          {errors.page3?.accommodation && !isDirty && <p>{errors.page3?.accommodation.message}</p>}
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
