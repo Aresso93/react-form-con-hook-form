@@ -9,11 +9,13 @@ export const destinations = [
 ]
 
 export function LocationForm() {
-
+  
   const {
     control,
     formState:{errors}
   } = useFormContext();
+  
+  console.log("SECONDO FORM", errors);
 
   return (
     <>

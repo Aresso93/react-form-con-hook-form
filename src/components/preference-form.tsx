@@ -30,6 +30,7 @@ export const activities = [
 
 export function PreferencesForm() {
   const { control, getValues, formState: {errors} } = useFormContext();
+  console.log("TERZO FORM", errors);
 
   return (
     <>

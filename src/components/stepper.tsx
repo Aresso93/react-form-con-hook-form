@@ -13,7 +13,6 @@ import { useFormContext } from "react-hook-form";
 import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 
 const steps = ["You", "Your destination", "Your preferences"];
-
 export default function TravellerStepper() {
   const onSubmit = (data) => console.log("CCCCCCC", data);
   const {handleSubmit}= useFormContext();
@@ -62,7 +61,6 @@ export default function TravellerStepper() {
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             <Button
               onClick={() => {
-                // handleSubmit(onSubmit)
                 stepperControls.actions.handleNext();
               }}
             >
