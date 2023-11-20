@@ -93,8 +93,11 @@ export default function TravellerStepper() {
                   conditionalStepper()
                 } else if(stepperControls.states.activeStep === 1){
                   trigger("page2")
-                  conditionalStepper()
+                  conditionalStepper() 
+                } else if(stepperControls.states.activeStep === 2){
+                  trigger("page3")
                 }
+                stepperControls.actions.handleNext()
               }}
             >
               {stepperControls.states.activeStep === steps.length - 1
