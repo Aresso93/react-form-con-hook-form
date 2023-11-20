@@ -14,9 +14,18 @@ import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 
 const steps = ["You", "Your destination", "Your preferences"];
 export default function TravellerStepper() {
-  const onSubmit = (data) => console.log("CCCCCCC", data);
   const {handleSubmit}= useFormContext();
   const stepperControls = useStepperControls();
+  console.log('Step numero ', stepperControls.states.activeStep)
+
+
+  // se step è 1 e errori pagina 1 tutti undefined, allora avanti
+
+  // altrimenti se step è 2 e errori pagina 2 tutti undefined, allora avanti
+
+  // altrimenti se step è 3 e errori pagina 3 tutti undefined, allora avanti
+
+
   return (
     <Box sx={{ width: "100%" }}>
       <Stepper activeStep={stepperControls.states.activeStep}>

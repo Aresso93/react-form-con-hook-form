@@ -21,7 +21,6 @@ export interface IFormInput {
   page3: {
     accommodation: string;
   }
-  
 }
 
 let olderThan18Yob = new Date().getFullYear() - 18
