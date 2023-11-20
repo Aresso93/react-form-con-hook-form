@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export interface IFormInput {
-  dateOfBirth: Date;
+  dateOfBirth: string;
   email: string;
   fullName: string;
   gender: string;
