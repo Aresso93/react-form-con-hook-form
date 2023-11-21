@@ -52,7 +52,7 @@ export function LocationForm() {
           )}
         />
     
-        <FormHelperText>{dateOfDepartureErrorMessage}</FormHelperText>
+        <FormHelperText error={true}>{dateOfDepartureErrorMessage}</FormHelperText>
 
         <Controller
           name="page2.dateOfReturn"
@@ -62,7 +62,7 @@ export function LocationForm() {
           )}
         />
         
-        <FormHelperText>{dateOfReturnErrorMessage}</FormHelperText>
+        <FormHelperText error={true}>{dateOfReturnErrorMessage}</FormHelperText>
       </div>
     </>
   );

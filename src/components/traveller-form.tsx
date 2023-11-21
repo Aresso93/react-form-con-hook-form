@@ -83,7 +83,7 @@ export default function TravellerForm() {
             <DatePicker value={value} onChange={onChange} />
             )}
             />
-            <FormHelperText>{dateOfBirthErrorMessage}</FormHelperText>
+            <FormHelperText error={true}>{dateOfBirthErrorMessage}</FormHelperText>
       </div>
     </>
   );
