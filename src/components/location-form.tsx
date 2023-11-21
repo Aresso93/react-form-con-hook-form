@@ -14,8 +14,6 @@ export function LocationForm() {
     control,
     formState:{errors, isDirty}
   } = useFormContext();
-  
-  console.log("ERRORI PAGINA 2", errors);
 
   return (
     <>

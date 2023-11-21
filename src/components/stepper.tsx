@@ -23,11 +23,7 @@ export default function TravellerStepper() {
   let step1 = stepperControls.states.activeStep === 0
   let step2 = stepperControls.states.activeStep === 1
   let step3 = stepperControls.states.activeStep === 2
-  console.log('Step numero ', stepperControls.states.activeStep)
-  console.log('ERRORI PAGINA 1', errors.page1)
-  console.log('Campi sporchi: ', dirtyFields.page1);
   
-
   function conditionalStepper(){
     if (stepperControls.states.activeStep === 0 && errors.page1 === undefined){
       stepperControls.actions.handleNext()
@@ -62,7 +58,7 @@ export default function TravellerStepper() {
     }
   }
 
-console.log('submitting?', isSubmitting)
+
   return (
     <Box sx={{ width: "100%" }}>
       <Stepper activeStep={stepperControls.states.activeStep}>
@@ -124,6 +120,11 @@ console.log('submitting?', isSubmitting)
         sx={{ mr: 1 }}
       >
         Back
+      </Button>
+      <Button
+      onClick={() => trigger()}
+      >
+        TRIGGER
       </Button>
     </Box>
   );

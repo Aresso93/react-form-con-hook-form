@@ -45,7 +45,7 @@ const schema = yup.object().shape({
 
 function App() {
   useEffect(() => {}, []);
-  const methods = useForm({resolver: yupResolver(schema)});
+  const methods = useForm({resolver: yupResolver(schema), mode: "onChange"});
   const onSubmit = (data: IFormInput) => {
     console.log(data);
   };
@@ -56,7 +56,6 @@ function App() {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <TravellerStepper />
-          <input type="submit" />
           </form>
         </FormProvider>
       </LocalizationProvider>
