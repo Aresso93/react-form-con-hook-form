@@ -15,7 +15,7 @@ import { useStepperControls } from "./custom-hooks/use-stepper-controls";
 const steps = ["You", "Your destination", "Your preferences"];
 export default function TravellerStepper() {
   const {
-    formState: { errors, dirtyFields },
+    formState: { errors },
     trigger,
   } = useFormContext();
   const stepperControls = useStepperControls();
@@ -39,13 +39,12 @@ export default function TravellerStepper() {
         conditionalStepper();
       }
     } else if (step2) {
-      if (await trigger("page2")){
+      if (await trigger("page2")) {
         conditionalStepper();
-      };
-      
+      }
     } else if (step3) {
-      if(await trigger("page3")){
-        conditionalStepper()
+      if (await trigger("page3")) {
+        conditionalStepper();
       }
       //bruttarello, questo. Non farlo se non assolutamente necessario
       // trigger("page3");
@@ -57,7 +56,7 @@ export default function TravellerStepper() {
   }
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box className="mat-box">
       <Stepper activeStep={stepperControls.states.activeStep}>
         {steps.map((label) => {
           const stepProps: { completed?: boolean } = {};
