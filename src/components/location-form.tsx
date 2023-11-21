@@ -21,9 +21,12 @@ export function LocationForm() {
   return (
     <>
       <div className="form-container">
-        <InputLabel id="demo-simple-select-label">Destination</InputLabel>
+        <InputLabel id="demo-simple-select-label"
+        error={errors.page2?.destination?.message}
+        >Destination</InputLabel>
         <Controller
           name="page2.destination"
+          
           control={control}
           defaultValue={""}
           render={({ field }) => (
@@ -37,7 +40,9 @@ export function LocationForm() {
             </Select>
           )}
           />
-          <FormHelperText>{destinationErrorMessage}</FormHelperText>
+          <FormHelperText
+          error
+          >{destinationErrorMessage}</FormHelperText>
        
         <Controller
           name="page2.dateOfDeparture"
@@ -53,7 +58,7 @@ export function LocationForm() {
           name="page2.dateOfReturn"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <DatePicker value={value} onChange={onChange} />
+            <DatePicker value={value} onChange={onChange}/>
           )}
         />
         

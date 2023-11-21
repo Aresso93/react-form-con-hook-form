@@ -20,7 +20,7 @@ export default function TravellerForm() {
   const {
     register,
     control,
-    formState: {errors, isDirty, touchedFields}
+    formState: {errors}
   } = useFormContext();
   
   useEffect(() => {}, []);
@@ -33,7 +33,7 @@ export default function TravellerForm() {
     <>
       <div className="form-container">
         <TextField
-         
+          error={nameErrorMessage}
           id="page1.fullName"
           label="Enter your full name"
           variant="outlined"
@@ -42,6 +42,7 @@ export default function TravellerForm() {
         />
 
         <TextField
+          error={emailErrorMessage}
           id="email"
           label="Enter your email address"
           helperText={emailErrorMessage}
@@ -61,14 +62,16 @@ export default function TravellerForm() {
               <RadioGroup {...field}>
                 {genders.map((gender) => (
                   <FormControlLabel
-                  error={Boolean(true)}
                     key={gender.id}
                     value={gender.name}
                     control={<Radio />}
                     label={gender.label}
                   />
                 ))}
-              <FormHelperText>{genderErrorMessage}</FormHelperText>
+              <FormHelperText
+               error={Boolean(true)}
+              >{genderErrorMessage}</FormHelperText>
+              
               </RadioGroup>
             )}
           />

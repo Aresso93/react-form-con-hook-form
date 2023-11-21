@@ -6,6 +6,7 @@ import {
   Radio,
   FormGroup,
   Checkbox,
+  FormHelperText,
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -35,11 +36,13 @@ export function PreferencesForm() {
     formState: { errors, isDirty },
   } = useFormContext();
 
+  let accommodationErrorMessage = errors.page3?.accommodation?.message;
+
   return (
     <>
       <div className="form-container">
         <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">
+          <FormLabel id="demo-radio-buttons-group-label" error={errors.page3?.accommodation?.message}>
             Accommodation
           </FormLabel>
 
@@ -58,13 +61,14 @@ export function PreferencesForm() {
                       label={accommodation.label}
                     />
                   ))}
+                  <FormHelperText
+                   error={Boolean(true)}
+                  >{accommodationErrorMessage}</FormHelperText>
                 </RadioGroup>
               )}
             />
           </div>
-          {errors.page3?.accommodation && isDirty && (
-            <p>{errors.page3?.accommodation.message}</p>
-          )}
+
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)
