@@ -50,7 +50,7 @@ export default function TravellerForm() {
           {...register("page1.email")}
         />
 
-        <FormLabel id="demo-radio-buttons-group-label">
+        <FormLabel id="demo-radio-buttons-group-label" error={errors.page1?.gender?.message}>
           Select your gender
         </FormLabel>
         <div className="check-container">

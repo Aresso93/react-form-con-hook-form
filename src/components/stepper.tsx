@@ -33,25 +33,26 @@ export default function TravellerStepper() {
     }
   }
 
-  function nextStep() {
+  async function nextStep() {
     if (step1) {
-      trigger("page1");
-      let dirtyForm1Length = Object.keys(dirtyFields.page1).length;
-      if (dirtyForm1Length === 4 && errors.page1 === undefined) {
+      if (await trigger("page1")) {
         conditionalStepper();
       }
     } else if (step2) {
-      trigger("page2");
-      let dirtyForm2Length = Object.keys(dirtyFields.page2).length;
-      if (dirtyForm2Length === 3 && errors.page2 === undefined) {
+      if (await trigger("page2")){
         conditionalStepper();
-      }
+      };
+      
     } else if (step3) {
-      trigger("page3");
-      let dirtyForm3Length = Object.keys(dirtyFields.page3).length;
-      if (dirtyForm3Length === 1 && errors.page3 === undefined) {
-        conditionalStepper();
+      if(await trigger("page3")){
+        conditionalStepper()
       }
+      //bruttarello, questo. Non farlo se non assolutamente necessario
+      // trigger("page3");
+      // let dirtyForm3Length = Object.keys(dirtyFields.page3).length;
+      // if (dirtyForm3Length === 1 && errors.page3 === undefined) {
+      //   conditionalStepper();
+      // }
     }
   }
 
