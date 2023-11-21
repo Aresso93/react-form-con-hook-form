@@ -45,7 +45,7 @@ const schema = yup.object().shape({
 function App() {
   const methods = useForm({resolver: yupResolver(schema)});
   const onSubmit = (data: IFormInput) => {
-    alert(JSON.stringify(data));
+    console.log(data);
   };
   
   return (
