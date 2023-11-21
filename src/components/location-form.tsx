@@ -1,5 +1,5 @@
 import { DatePicker } from "@mui/x-date-pickers";
-import { InputLabel, Select, MenuItem } from "@mui/material";
+import { InputLabel, Select, MenuItem, FormHelperText } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
 export const destinations = [
@@ -14,6 +14,10 @@ export function LocationForm() {
     formState: { errors, isDirty },
   } = useFormContext();
 
+  let destinationErrorMessage = errors.page2?.destination?.message
+  let dateOfDepartureErrorMessage = errors.page2?.dateOfDeparture?.message
+  let dateOfReturnErrorMessage = errors.page2?.dateOfReturn?.message
+
   return (
     <>
       <div className="form-container">
@@ -23,7 +27,8 @@ export function LocationForm() {
           control={control}
           defaultValue={""}
           render={({ field }) => (
-            <Select {...field}>
+            <Select {...field}
+            >
               {destinations.map((destination) => (
                 <MenuItem key={destination.id} value={destination.name}>
                   {destination.label}
@@ -31,10 +36,9 @@ export function LocationForm() {
               ))}
             </Select>
           )}
-        />
-        {errors.page2?.destination && isDirty && (
-          <p>{errors.page2?.destination.message}</p>
-        )}
+          />
+          <FormHelperText>{destinationErrorMessage}</FormHelperText>
+       
         <Controller
           name="page2.dateOfDeparture"
           control={control}
@@ -42,9 +46,8 @@ export function LocationForm() {
             <DatePicker value={value} onChange={onChange} />
           )}
         />
-        {errors.page2?.dateOfDeparture && isDirty && (
-          <p>{errors.page2?.dateOfDeparture.message}</p>
-        )}
+    
+        <FormHelperText>{dateOfDepartureErrorMessage}</FormHelperText>
 
         <Controller
           name="page2.dateOfReturn"
@@ -53,9 +56,8 @@ export function LocationForm() {
             <DatePicker value={value} onChange={onChange} />
           )}
         />
-        {errors.page2?.dateOfReturn && isDirty && (
-          <p>{errors.page2?.dateOfReturn.message}</p>
-        )}
+        
+        <FormHelperText>{dateOfReturnErrorMessage}</FormHelperText>
       </div>
     </>
   );

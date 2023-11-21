@@ -3,6 +3,7 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  FormHelperText,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers";
@@ -19,33 +20,34 @@ export default function TravellerForm() {
   const {
     register,
     control,
-    formState: {errors, isDirty},
+    formState: {errors, isDirty, touchedFields}
   } = useFormContext();
   
   useEffect(() => {}, []);
-
+  let nameErrorMessage = errors.page1?.fullName?.message
+  let emailErrorMessage = errors.page1?.email?.message
+  let genderErrorMessage = errors.page1?.gender?.message
+  let dateOfBirthErrorMessage = errors.page1?.dateOfBirth?.message
+  
   return (
     <>
       <div className="form-container">
         <TextField
-          id="name"
+         
+          id="page1.fullName"
           label="Enter your full name"
           variant="outlined"
+          helperText={nameErrorMessage !== undefined ? nameErrorMessage : null}
           {...register("page1.fullName")}
         />
-
-        {errors.page1?.fullName && isDirty && <p>{errors.page1?.fullName.message}</p>}
-        {errors.page1 && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <TextField
           id="email"
           label="Enter your email address"
+          helperText={emailErrorMessage}
           variant="outlined"
           {...register("page1.email")}
         />
-
-       {errors.page1?.email && isDirty ? <p>{errors.page1?.email.message}</p> : null}
-        {errors.email && !isDirty && <p>CAMPO NECESSARIO</p>}
 
         <FormLabel id="demo-radio-buttons-group-label">
           Select your gender
@@ -59,26 +61,27 @@ export default function TravellerForm() {
               <RadioGroup {...field}>
                 {genders.map((gender) => (
                   <FormControlLabel
+                  error={Boolean(true)}
                     key={gender.id}
                     value={gender.name}
                     control={<Radio />}
                     label={gender.label}
                   />
                 ))}
+              <FormHelperText>{genderErrorMessage}</FormHelperText>
               </RadioGroup>
             )}
           />
         </div>
-        {errors.page1?.gender && <p>{errors.page1.gender.message}</p>}
         <Controller
           name="page1.dateOfBirth"
           control={control}
           render={({ field: { onChange, value } }) => (
             <DatePicker value={value} onChange={onChange} />
-          )}
-        />
+            )}
+            />
+            <FormHelperText>{dateOfBirthErrorMessage}</FormHelperText>
       </div>
-      {errors.page1?.dateOfBirth && <p>{errors.page1?.dateOfBirth.message}</p>}
     </>
   );
 }
