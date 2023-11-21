@@ -13,7 +13,7 @@ export const accommodationSolutions = [
   { id: 1, name: "Hotel", label: "Hotel" },
   { id: 2, name: "Camping site", label: "Camping Site" },
   { id: 3, name: "Apartment", label: "Apartment" },
-  { id: 4, name: "BnB", label: "BnB" }
+  { id: 4, name: "BnB", label: "BnB" },
 ];
 
 export const meals = [
@@ -29,7 +29,11 @@ export const activities = [
 ];
 
 export function PreferencesForm() {
-  const { control, getValues, formState: {errors, isDirty} } = useFormContext();
+  const {
+    control,
+    getValues,
+    formState: { errors, isDirty },
+  } = useFormContext();
 
   return (
     <>
@@ -58,7 +62,9 @@ export function PreferencesForm() {
               )}
             />
           </div>
-          {errors.page3?.accommodation && isDirty && <p>{errors.page3?.accommodation.message}</p>}
+          {errors.page3?.accommodation && isDirty && (
+            <p>{errors.page3?.accommodation.message}</p>
+          )}
           <FormGroup>
             Pick the meals you want during your stay (you can select multiple
             options)

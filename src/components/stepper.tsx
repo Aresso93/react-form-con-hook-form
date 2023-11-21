@@ -11,53 +11,49 @@ import TravellerForm from "./traveller-form";
 import Recap from "./recap";
 import { useFormContext } from "react-hook-form";
 import { useStepperControls } from "./custom-hooks/use-stepper-controls";
-import { useEffect } from "react";
 
 const steps = ["You", "Your destination", "Your preferences"];
 export default function TravellerStepper() {
-  
-  
-  
-  const {handleSubmit, formState:{errors, isSubmitting, dirtyFields, isDirty}, trigger}= useFormContext();
+  const {
+    formState: { errors, dirtyFields },
+    trigger,
+  } = useFormContext();
   const stepperControls = useStepperControls();
-  let step1 = stepperControls.states.activeStep === 0
-  let step2 = stepperControls.states.activeStep === 1
-  let step3 = stepperControls.states.activeStep === 2
-  
-  function conditionalStepper(){
-    if (stepperControls.states.activeStep === 0 && errors.page1 === undefined){
-      stepperControls.actions.handleNext()
-    } else if (stepperControls.states.activeStep === 1 && errors.page2 === undefined){
-      stepperControls.actions.handleNext()
-    } else if (stepperControls.states.activeStep === 2 && errors.page3 === undefined){
-      stepperControls.actions.handleNext()
+  let step1 = stepperControls.states.activeStep === 0;
+  let step2 = stepperControls.states.activeStep === 1;
+  let step3 = stepperControls.states.activeStep === 2;
+
+  function conditionalStepper() {
+    if (step1 && errors.page1 === undefined) {
+      stepperControls.actions.handleNext();
+    } else if (step2 && errors.page2 === undefined) {
+      stepperControls.actions.handleNext();
+    } else if (step3 && errors.page3 === undefined) {
+      stepperControls.actions.handleNext();
     }
   }
 
-  
-  function nextStep(){
-    if(step1){
-      trigger("page1")
-      let dirtyForm1Length = Object.keys(dirtyFields.page1).length
-      if(dirtyForm1Length === 4 && errors.page1 === undefined){
-     
-        conditionalStepper()
-      } 
-    } else if(step2){
-      trigger("page2")
-      let dirtyForm2Length = Object.keys(dirtyFields.page2).length
-      if(dirtyForm2Length === 3 && errors.page2 === undefined){
-        conditionalStepper()
+  function nextStep() {
+    if (step1) {
+      trigger("page1");
+      let dirtyForm1Length = Object.keys(dirtyFields.page1).length;
+      if (dirtyForm1Length === 4 && errors.page1 === undefined) {
+        conditionalStepper();
       }
-    } else if(step3){
-      trigger("page3")
-      let dirtyForm3Length = Object.keys(dirtyFields.page3).length
-      if(dirtyForm3Length === 1 && errors.page3 === undefined){
-        conditionalStepper()
+    } else if (step2) {
+      trigger("page2");
+      let dirtyForm2Length = Object.keys(dirtyFields.page2).length;
+      if (dirtyForm2Length === 3 && errors.page2 === undefined) {
+        conditionalStepper();
+      }
+    } else if (step3) {
+      trigger("page3");
+      let dirtyForm3Length = Object.keys(dirtyFields.page3).length;
+      if (dirtyForm3Length === 1 && errors.page3 === undefined) {
+        conditionalStepper();
       }
     }
   }
-
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -95,16 +91,13 @@ export default function TravellerStepper() {
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             {step1 && <TravellerForm />}
 
-            {step2 && <LocationForm/>}
+            {step2 && <LocationForm />}
 
             {step3 && <PreferencesForm />}
             <Box sx={{ flex: "1 1 auto" }} />
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-            <Button
-              onClick={nextStep}
-
-            >
+            <Button onClick={nextStep}>
               {stepperControls.states.activeStep === steps.length - 1
                 ? "Finish"
                 : "Next"}
@@ -121,7 +114,6 @@ export default function TravellerStepper() {
       >
         Back
       </Button>
-      
     </Box>
   );
 }
