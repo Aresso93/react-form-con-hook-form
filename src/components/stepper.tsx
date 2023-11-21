@@ -17,12 +17,15 @@ const steps = ["You", "Your destination", "Your preferences"];
 export default function TravellerStepper() {
 
   
-  const {handleSubmit, formState:{errors}, trigger}= useFormContext();
- 
+  const {handleSubmit, formState:{errors, isSubmitting, dirtyFields, isDirty}, trigger}= useFormContext();
   const stepperControls = useStepperControls();
+  let step1 = stepperControls.states.activeStep === 0
+  let step2 = stepperControls.states.activeStep === 1
+  let step3 = stepperControls.states.activeStep === 2
   console.log('Step numero ', stepperControls.states.activeStep)
   console.log('ERRORI PAGINA 1', errors.page1)
-
+  console.log('Campi sporchi: ', dirtyFields.page1);
+  
 
   function conditionalStepper(){
     if (stepperControls.states.activeStep === 0 && errors.page1 === undefined){
@@ -45,6 +48,8 @@ export default function TravellerStepper() {
     }
   }
 
+  let isFilling = false
+console.log('submitting?', isSubmitting)
   return (
     <Box sx={{ width: "100%" }}>
       <Stepper activeStep={stepperControls.states.activeStep}>
@@ -79,35 +84,44 @@ export default function TravellerStepper() {
             Step {stepperControls.states.activeStep + 1}/{steps.length}
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
-            {stepperControls.states.activeStep === 0 && <TravellerForm />}
+            {step1 && <TravellerForm />}
 
-            {stepperControls.states.activeStep === 1 && <LocationForm/>}
+            {step2 && <LocationForm/>}
 
-            {stepperControls.states.activeStep === 2 && <PreferencesForm />}
+            {step3 && <PreferencesForm />}
             <Box sx={{ flex: "1 1 auto" }} />
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             <Button
               onClick={()=> {
-                let isFilling = true
-                console.log('Sul click', isFilling)
-                if(stepperControls.states.activeStep === 0){
+                
+                if(step1){
                   trigger("page1")
-                  isFilling = true
-                  console.log(isFilling)
-                  if(errors.page1 === undefined && isFilling){
+
+                  if(dirtyFields.page1.fullName === true && dirtyFields.page1.email === true && dirtyFields.page1.gender === true && dirtyFields.page1.dateOfBirth === true && errors.page1 === undefined){
                     console.log('EEEEEEEEEEEEEE')
+                    
                     conditionalStepper()
-                    isFilling = true
+                    
+                  } 
+                } else if(step2){
+                  trigger("page2")
+                  if(dirtyFields.page2.destination === true && dirtyFields.page2.dateOfDeparture === true && dirtyFields.page2.dateOfReturn === true && errors.page2 === undefined){
+                    conditionalStepper()
                   }
-                } 
+                } else if(step3){
+                  trigger("page3")
+                  if(dirtyFields.page3.accommodation === true && errors.page3 === undefined){
+                    conditionalStepper()
+                  }
+                }
               }}
             >
               {stepperControls.states.activeStep === steps.length - 1
                 ? "Finish"
                 : "Next"}
             </Button>
-            
+            {/* //tutti campi dirty e errori undefined, vai avanti */}
           </Box>
         </React.Fragment>
       )}

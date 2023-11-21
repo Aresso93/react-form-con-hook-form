@@ -42,7 +42,7 @@ export default function Recap() {
           checked={watch("accept")}
         />
         {getValues("accept") === true ? (
-          <Button variant="outlined" onClick={handleSubmit(onSubmit)}>
+          <Button variant="outlined" onClick={handleSubmit(onSubmit)} type="submit">
             Submit
           </Button>
         ) : (
