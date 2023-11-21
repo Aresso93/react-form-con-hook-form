@@ -89,29 +89,18 @@ export default function TravellerStepper() {
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             <Button
               onClick={()=> {
-                let isFilling = false
-                console.log(isFilling)
-                
+                let isFilling = true
+                console.log('Sul click', isFilling)
                 if(stepperControls.states.activeStep === 0){
                   trigger("page1")
                   isFilling = true
                   console.log(isFilling)
                   if(errors.page1 === undefined && isFilling){
-
+                    console.log('EEEEEEEEEEEEEE')
                     conditionalStepper()
+                    isFilling = true
                   }
-                } else if(stepperControls.states.activeStep === 1){
-                  trigger("page2")
-                  isFilling = true
-                  console.log(isFilling)
-                  if(errors.page2 === undefined && isFilling){
-
-                    conditionalStepper()
-                  }
-                } else if(stepperControls.states.activeStep === 2){
-                  stepperControls.actions.handleNext()
                 } 
-                  
               }}
             >
               {stepperControls.states.activeStep === steps.length - 1
