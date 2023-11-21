@@ -5,6 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
 
 export interface IFormInput {
   page1: {
@@ -43,6 +44,7 @@ const schema = yup.object().shape({
 })
 
 function App() {
+  useEffect(() => {}, []);
   const methods = useForm({resolver: yupResolver(schema)});
   const onSubmit = (data: IFormInput) => {
     console.log(data);

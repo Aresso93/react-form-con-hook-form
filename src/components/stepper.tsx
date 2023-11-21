@@ -15,7 +15,8 @@ import { useEffect } from "react";
 
 const steps = ["You", "Your destination", "Your preferences"];
 export default function TravellerStepper() {
-
+  
+  
   
   const {handleSubmit, formState:{errors, isSubmitting, dirtyFields, isDirty}, trigger}= useFormContext();
   const stepperControls = useStepperControls();
@@ -37,18 +38,30 @@ export default function TravellerStepper() {
     }
   }
 
-  function test(step){
-    step = stepperControls.states.activeStep
-    if (step === 0) {
+  
+  function nextStep(){
+    if(step1){
       trigger("page1")
-    } else if (step === 1){
+      let dirtyForm1Length = Object.keys(dirtyFields.page1).length
+      if(dirtyForm1Length === 4 && errors.page1 === undefined){
+     
+        conditionalStepper()
+      } 
+    } else if(step2){
       trigger("page2")
-    } else if (step === 2){
+      let dirtyForm2Length = Object.keys(dirtyFields.page2).length
+      if(dirtyForm2Length === 3 && errors.page2 === undefined){
+        conditionalStepper()
+      }
+    } else if(step3){
       trigger("page3")
+      let dirtyForm3Length = Object.keys(dirtyFields.page3).length
+      if(dirtyForm3Length === 1 && errors.page3 === undefined){
+        conditionalStepper()
+      }
     }
   }
 
-  let isFilling = false
 console.log('submitting?', isSubmitting)
   return (
     <Box sx={{ width: "100%" }}>
@@ -93,29 +106,8 @@ console.log('submitting?', isSubmitting)
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", pt: 2 }}>
             <Button
-              onClick={()=> {
-                
-                if(step1){
-                  trigger("page1")
+              onClick={nextStep}
 
-                  if(dirtyFields.page1.fullName === true && dirtyFields.page1.email === true && dirtyFields.page1.gender === true && dirtyFields.page1.dateOfBirth === true && errors.page1 === undefined){
-                    console.log('EEEEEEEEEEEEEE')
-                    
-                    conditionalStepper()
-                    
-                  } 
-                } else if(step2){
-                  trigger("page2")
-                  if(dirtyFields.page2.destination === true && dirtyFields.page2.dateOfDeparture === true && dirtyFields.page2.dateOfReturn === true && errors.page2 === undefined){
-                    conditionalStepper()
-                  }
-                } else if(step3){
-                  trigger("page3")
-                  if(dirtyFields.page3.accommodation === true && errors.page3 === undefined){
-                    conditionalStepper()
-                  }
-                }
-              }}
             >
               {stepperControls.states.activeStep === steps.length - 1
                 ? "Finish"
