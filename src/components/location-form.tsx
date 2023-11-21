@@ -11,7 +11,7 @@ export const destinations = [
 export function LocationForm() {
   const {
     control,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useFormContext();
 
   let destinationErrorMessage = errors.page2?.destination?.message

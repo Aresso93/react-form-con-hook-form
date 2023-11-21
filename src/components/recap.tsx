@@ -9,10 +9,12 @@ export default function Recap() {
   const { register, watch, getValues, handleSubmit } = useFormContext();
   const onSubmit = (data) => console.log("BBBBBBB", data);
   let watchedMeals = watch("meals");
-  let activities = watch("activities");
+  let watchedActivities = watch("activities");
 
   function arrayDisplayer(obj: {}) {
     let objArray = Object.entries(obj);
+    console.log("OBJARRAY", objArray);
+
     let tempArray = [];
     for (let i = 0; i < objArray.length; i++) {
       const element = objArray[i];
@@ -20,6 +22,8 @@ export default function Recap() {
         tempArray.push(element[0]);
       }
     }
+    console.log("TEMPARRAY", tempArray);
+
     return tempArray;
   }
 
@@ -42,7 +46,11 @@ export default function Recap() {
           checked={watch("accept")}
         />
         {getValues("accept") === true ? (
-          <Button variant="outlined" onClick={handleSubmit(onSubmit)} type="submit">
+          <Button
+            variant="outlined"
+            onClick={handleSubmit(onSubmit)}
+            type="submit"
+          >
             Submit
           </Button>
         ) : (
@@ -64,8 +72,10 @@ export default function Recap() {
       <div className="recap-modal">
         Information about your travel<br></br>
         <span>Destination: {watch("page2.destination")}</span>
-        <span>Date of departure: {watch("page2.dateOfDeparture").toString()}</span>
-        <span>Date of return: {watch("page2.dateOfReturn").toString()}</span> 
+        <span>
+          Date of departure: {watch("page2.dateOfDeparture").toString()}
+        </span>
+        <span>Date of return: {watch("page2.dateOfReturn").toString()}</span>
         <EditModal>
           <LocationForm />
         </EditModal>
@@ -74,21 +84,31 @@ export default function Recap() {
         Information about your preferences<br></br>
         <span>Method of accommodation: {watch("page3.accommodation")}</span>
         Selected meals:
-        <div>
-          {arrayDisplayer(watchedMeals).map((meal) => (
-            <div>{meal}</div>
-          ))}
-        </div>
+        {arrayDisplayer(watchedMeals).length === 0 ? (
+          " none"
+        ) : (
+          <div>
+            {arrayDisplayer(watchedMeals).map((meal) => (
+              <div>{meal}</div>
+            ))}
+          </div>
+        )}
+        <br />
         Selected activities:
-        <div>
-          {arrayDisplayer(activities).map((activity) => (
-            <div>{activity}</div>
-          ))}
-        </div>
+        {arrayDisplayer(watchedActivities).length === 0 ? (
+          " none"
+        ) : (
+          <div>
+            {arrayDisplayer(watchedActivities).map((activity) => (
+              <div>{activity}</div>
+            ))}
+          </div>
+        )}
         <EditModal>
           <PreferencesForm />
         </EditModal>
       </div>
+      {console.log("KKKKKKKK", arrayDisplayer(watchedActivities))}
     </>
   );
 }

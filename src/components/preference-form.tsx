@@ -102,6 +102,7 @@ export function PreferencesForm() {
                   render={({ field }) => (
                     <FormControlLabel
                       control={<Checkbox />}
+                      checked={getValues(`activities.${activity.name}`)}
                       label={activity.label}
                       {...field}
                     />
