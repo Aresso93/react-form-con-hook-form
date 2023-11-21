@@ -121,11 +121,7 @@ export default function TravellerStepper() {
       >
         Back
       </Button>
-      <Button
-      onClick={() => trigger()}
-      >
-        TRIGGER
-      </Button>
+      
     </Box>
   );
 }
