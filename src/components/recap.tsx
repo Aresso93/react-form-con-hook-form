@@ -13,7 +13,6 @@ export default function Recap() {
 
   function arrayDisplayer(obj: {}) {
     let objArray = Object.entries(obj);
-    console.log("OBJARRAY", objArray);
 
     let tempArray = [];
     for (let i = 0; i < objArray.length; i++) {
@@ -22,8 +21,6 @@ export default function Recap() {
         tempArray.push(element[0]);
       }
     }
-    console.log("TEMPARRAY", tempArray);
-
     return tempArray;
   }
 
@@ -108,7 +105,6 @@ export default function Recap() {
           <PreferencesForm />
         </EditModal>
       </div>
-      {console.log("KKKKKKKK", arrayDisplayer(watchedActivities))}
     </>
   );
 }

@@ -69,7 +69,7 @@ function App() {
   useEffect(() => {}, []);
   const methods = useForm({ resolver: yupResolver(schema), mode: "onChange" });
   const onSubmit = (data: IFormInput) => {
-    console.log(data);
+
   };
 
   return (

@@ -10,7 +10,6 @@ import { useFormContext } from "react-hook-form";
 
 export default function EditModal({ children }) {
   const {handleSubmit} = useFormContext();
-
   const onSubmit = (data) => console.log("AAAAAAAA", data);
   const [open, setOpen] = useState(false);
 
